@@ -94,3 +94,6 @@ local.properties
 hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java
+
+# Ignore JavaDoc for now as it can be generated on-the-fly anyway
+doc/
