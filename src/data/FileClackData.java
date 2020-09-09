@@ -46,7 +46,7 @@ public class FileClackData extends ClackData {
 	}
 	
 	/**
-	 *  reads the file contents does not return anything, for now it should have no code, just a declaration
+	 * Reads the file contents does not return anything, for now it should have no code, just a declaration
 	 * @return
 	 */
 	public void readFileContents() {
@@ -54,7 +54,7 @@ public class FileClackData extends ClackData {
 	}
 	
 	/**
-	 *  writes the file contents does not return anything, for now it should have no code, just a declaration
+	 * Writes the file contents does not return anything, for now it should have no code, just a declaration
 	 * @return
 	 */
 	public void writeFileContents() {
