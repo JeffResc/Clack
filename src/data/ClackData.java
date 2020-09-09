@@ -15,6 +15,7 @@ public class ClackData {
 	Integer type;
 	Date date;
 	
+	// Constructors
 	public ClackData(String userName, Integer type) {
 		this.userName = userName;
 		this.type = type;
