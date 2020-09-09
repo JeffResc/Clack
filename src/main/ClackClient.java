@@ -15,21 +15,32 @@ public class ClackClient {
 	ClackData dataToSendToServer;
 	ClackData dataToReceieveFromServer;
 
-	// Constructors
+	/**
+	 * Constructor that accepts a userName, hostName and port
+	 */
 	public ClackClient(String userName, String hostName, Integer port) {
 		this.userName = userName;
 		this.hostName = hostName;
 		this.port = port;
 	}
 
+	/**
+	 * Constructor that accepts a userName and hostName
+	 */
 	public ClackClient(String userName, String hostName) {
 		this(userName, hostName, new Integer(DEFAULT_PORT));
 	}
 
+	/**
+	 * Constructor that accepts a userName
+	 */
 	public ClackClient(String userName) {
 		this(userName, "localhost");
 	}
 
+	/**
+	 * Default constructor
+	 */
 	public ClackClient() {
 		this("Anon");
 	}
