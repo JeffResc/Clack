@@ -9,8 +9,8 @@ public class FileClackData extends ClackData {
 	/**
 	 * Constructor that accepts a userName, fileName and type
 	 */
-	public FileClackData(String userName, String fileName, Integer Type){
-		super(userName,Type);
+	public FileClackData(String userName, String fileName, Integer type){
+		super(userName, type);
 		this.fileName = fileName;
 		this.fileContents = null;
 	}
