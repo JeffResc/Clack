@@ -15,6 +15,7 @@ public abstract class ClackData {
 	Integer type;
 	Date date;
 	
+	// Constructors
 	public ClackData(String userName, Integer type) {
 		this.userName = userName;
 		this.type = type;
@@ -26,8 +27,7 @@ public abstract class ClackData {
 	}
 	
 	public ClackData() {
-		// 0 is probably not the right default and may need to change in the future
-		this(0);
+		this(-1);
 	}
 	
 	/**
