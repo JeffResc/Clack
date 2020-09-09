@@ -21,7 +21,7 @@ public class MessageClackData extends ClackData {
 	}
 	
 	/**
-	 *  returns the method
+	 * Returns the method
 	 * @return
 	 */
 	public String getData() {
