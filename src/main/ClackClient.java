@@ -90,6 +90,7 @@ public class ClackClient {
 	
 	@Override
 	public int hashCode() {
+		// Not sure if this implementation is correct, may need to be fixed in the future
 		return 0x20;
 	}
 	
