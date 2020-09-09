@@ -27,8 +27,7 @@ public class ClackData {
 	}
 	
 	public ClackData() {
-		// 0 is probably not the right default and may need to change in the future
-		this(0);
+		this(-1);
 	}
 	
 	/**
