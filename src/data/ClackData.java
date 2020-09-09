@@ -4,10 +4,24 @@ import java.util.Date;
 
 public abstract class ClackData {
 	
-	// Constants
+	/**
+	 * A representative constant meaning "List users" for the type variable
+	 */
 	public static final int CONSTANT_LISTUSERS = 0;
+	
+	/**
+	 * A representative constant meaning "Logout" for the type variable
+	 */
 	public static final int CONSTANT_LOGOUT = 1;
+	
+	/**
+	 * A representative constant meaning "Send message" for the type variable
+	 */
 	public static final int CONSTANT_SENDMESSAGE = 2;
+	
+	/**
+	 * A representative constant meaning "Send file" for the type variable
+	 */
 	public static final int CONSTANT_SENDFILE = 3;
 
 	// ClackData variables
@@ -15,17 +29,25 @@ public abstract class ClackData {
 	Integer type;
 	Date date;
 
-	// Constructors
+	/**
+	 * Constructor that accepts a userName and type
+	 */
 	public ClackData(String userName, Integer type) {
 		this.userName = userName;
 		this.type = type;
 		this.date = new Date();
 	}
 
+	/**
+	 * Constructor that accepts a type
+	 */
 	public ClackData(Integer type) {
 		this("Anon", type);
 	}
 
+	/**
+	 * Default constructor
+	 */
 	public ClackData() {
 		this(-1);
 	}
