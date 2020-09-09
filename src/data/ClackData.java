@@ -2,7 +2,7 @@ package data;
 
 import java.util.Date;
 
-public class ClackData {
+public abstract class ClackData {
 	
 	// Constants
 	public static final int CONSTANT_LISTUSERS = 0;
@@ -58,7 +58,5 @@ public class ClackData {
 	 * Returns the data contained in ClackData
 	 * @return
 	 */
-	public void getData() {
-		// Needs to be set
-	}
+	public abstract String getData();
 }
