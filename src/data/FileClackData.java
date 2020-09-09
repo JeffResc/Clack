@@ -6,15 +6,25 @@ public class FileClackData extends ClackData {
 	private String fileName;
 	private String fileContents;
 	
+	/**
+	 * Constructor that accepts a userName, fileName and type
+	 */
 	public FileClackData(String userName, String fileName, Integer Type){
 		super(userName,Type);
 		this.fileName = fileName;
 		this.fileContents = null;
 	}
+	
+	/**
+	 * Default constructor
+	 */
 	public FileClackData() {
 		super();
 	}
 	
+	/**
+	 * Sets fileName
+	 */
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
