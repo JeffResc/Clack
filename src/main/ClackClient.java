@@ -4,6 +4,9 @@ import data.ClackData;
 
 public class ClackClient {
 	
+	// Constants
+	public static final Integer DEFAULT_PORT = 7000;
+	
 	// ClackData variables
 	String userName;
 	String hostName;
@@ -20,7 +23,7 @@ public class ClackClient {
 	}
 	
 	public ClackClient(String userName, String hostName) {
-		this(userName, hostName, new Integer(7000));
+		this(userName, hostName, new Integer(DEFAULT_PORT));
 	}
 	
 	public ClackClient(String userName) {
