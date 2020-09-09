@@ -13,6 +13,10 @@ public class MessageClackData extends ClackData {
 	public MessageClackData() {
 		this("Anon", null, -1);
 	}
+	/**
+	 *  returns the method
+	 * @return
+	 */
 	public String getData() {
 		return message;
 	}

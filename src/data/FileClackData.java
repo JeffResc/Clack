@@ -18,15 +18,35 @@ public class FileClackData extends ClackData {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+	
+	/**
+	 * Returns fileName
+	 * @return
+	 */
 	public String getFileName() {
 		return this.fileName;
 	}
+	
+	/**
+	 * Returns fileContents
+	 * @return
+	 */
 	public String getData() {
 		return this.fileContents;
 	}
+	
+	/**
+	 *  reads the file contents does not return anything, for now it should have no code, just a declaration
+	 * @return
+	 */
 	public void readFileContents() {
 		//needs to be set
 	}
+	
+	/**
+	 *  writes the file contents does not return anything, for now it should have no code, just a declaration
+	 * @return
+	 */
 	public void writeFileContents() {
 		//needs to be set
 	}
