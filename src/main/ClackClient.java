@@ -103,9 +103,12 @@ public class ClackClient {
 		if (!(other instanceof ClackClient)) return false;
 		
 		ClackClient otherClackClient = (ClackClient)other;
-		return this.userName == otherClackClient.getUserName() &&
-				this.hostName == otherClackClient.getHostName() &&
-				this.port == otherClackClient.getPort();
+		return this.userName == otherClackClient.userName &&
+				this.hostName == otherClackClient.hostName &&
+				this.port == otherClackClient.port &&
+				this.closeConnection == otherClackClient.closeConnection &&
+				this.dataToSendToServer == otherClackClient.dataToSendToServer &&
+				this.dataToReceieveFromServer == otherClackClient.dataToReceieveFromServer;
 	}
 	
 	@Override
