@@ -3,22 +3,27 @@ package data;
 import java.util.Date;
 
 public abstract class ClackData {
-	
+
+	/**
+	 * A representative constant meaning the default type for the type variable
+	 */
+	public static final int CONSTANT_DEFAULT_TYPE = -1;
+
 	/**
 	 * A representative constant meaning "List users" for the type variable
 	 */
 	public static final int CONSTANT_LISTUSERS = 0;
-	
+
 	/**
 	 * A representative constant meaning "Logout" for the type variable
 	 */
 	public static final int CONSTANT_LOGOUT = 1;
-	
+
 	/**
 	 * A representative constant meaning "Send message" for the type variable
 	 */
 	public static final int CONSTANT_SENDMESSAGE = 2;
-	
+
 	/**
 	 * A representative constant meaning "Send file" for the type variable
 	 */
@@ -49,7 +54,7 @@ public abstract class ClackData {
 	 * Default constructor
 	 */
 	public ClackData() {
-		this(-1);
+		this(CONSTANT_DEFAULT_TYPE);
 	}
 
 	/**

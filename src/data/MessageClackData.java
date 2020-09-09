@@ -1,7 +1,7 @@
 package data;
 
 public class MessageClackData extends ClackData {
-
+	
 	// ClackData variables
 	String message;
 
@@ -17,7 +17,7 @@ public class MessageClackData extends ClackData {
 	 * Default constructor
 	 */
 	public MessageClackData() {
-		this("Anon", null, -1);
+		this("Anon", null, CONSTANT_DEFAULT_TYPE);
 	}
 	
 	/**
