@@ -4,7 +4,9 @@ import data.ClackData;
 
 public class ClackServer {
 
-	// Constants
+	/**
+	 * Sets default port
+	 */
 	public static final Integer DEFAULT_PORT = 7000;
 
 	// ClackServer variables
@@ -13,11 +15,16 @@ public class ClackServer {
 	ClackData dataToReceieveFromClient;
 	ClackData dataToSendToClient;
 
-	// Constructors
+	/**
+	 * Constructor that accepts a port
+	 */
 	public ClackServer(Integer port) {
 		this.port = port;
 	}
-
+	
+	/**
+	 * Default constructor
+	 */
 	public ClackServer() {
 		this(DEFAULT_PORT);
 	}
