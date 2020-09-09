@@ -5,15 +5,21 @@ public class MessageClackData extends ClackData {
 	// ClackData variables
 	String message;
 
-	// Constructors
+	/**
+	 * Constructor that accepts a userName, message and type
+	 */
 	public MessageClackData(String userName, String message, Integer type) {
 		super(userName, type);
 		this.message = message;
 	}
 
+	/**
+	 * Default constructor
+	 */
 	public MessageClackData() {
 		this("Anon", null, -1);
 	}
+	
 	/**
 	 *  returns the method
 	 * @return
