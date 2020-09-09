@@ -4,7 +4,9 @@ import data.ClackData;
 
 public class ClackClient {
 
-	// Constants
+	/**
+	 * Sets default port
+	 */
 	public static final Integer DEFAULT_PORT = 7000;
 
 	// ClackData variables
