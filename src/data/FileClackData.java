@@ -1,5 +1,7 @@
 package data;
 
+import java.util.Objects;
+
 public class FileClackData extends ClackData {
 
 	/**
@@ -75,11 +77,7 @@ public class FileClackData extends ClackData {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((fileContents == null) ? 0 : fileContents.hashCode());
-		result = prime * result + ((fileName == null) ? 0 : fileName.hashCode());
-		return result;
+		return Objects.hash(fileContents, fileName);
 	}
 
 	@Override
@@ -91,17 +89,7 @@ public class FileClackData extends ClackData {
 		if (getClass() != obj.getClass())
 			return false;
 		FileClackData other = (FileClackData) obj;
-		if (fileContents == null) {
-			if (other.fileContents != null)
-				return false;
-		} else if (!fileContents.equals(other.fileContents))
-			return false;
-		if (fileName == null) {
-			if (other.fileName != null)
-				return false;
-		} else if (!fileName.equals(other.fileName))
-			return false;
-		return true;
+		return Objects.equals(fileContents, other.fileContents) && Objects.equals(fileName, other.fileName);
 	}
 
 	@Override
