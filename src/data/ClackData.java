@@ -46,6 +46,9 @@ public abstract class ClackData {
 
 	/**
 	 * Constructor that accepts a userName and type.
+	 * 
+	 * @param userName userName
+	 * @param type type
 	 */
 	public ClackData(String userName, Integer type) {
 		this.userName = userName;
@@ -55,6 +58,8 @@ public abstract class ClackData {
 
 	/**
 	 * Constructor that accepts a type.
+	 * 
+	 * @param type type
 	 */
 	public ClackData(Integer type) {
 		this("Anon", type);
@@ -70,7 +75,7 @@ public abstract class ClackData {
 	/**
 	 * Returns type.
 	 * 
-	 * @return
+	 * @return type
 	 */
 	public Integer getType() {
 		return type;
@@ -79,7 +84,7 @@ public abstract class ClackData {
 	/**
 	 * Returns userName.
 	 * 
-	 * @return
+	 * @return userName
 	 */
 	public String getUserName() {
 		return userName;
@@ -88,7 +93,7 @@ public abstract class ClackData {
 	/**
 	 * Returns date.
 	 * 
-	 * @return
+	 * @return date
 	 */
 	public Date getDate() {
 		return date;
@@ -97,7 +102,7 @@ public abstract class ClackData {
 	/**
 	 * Returns the data contained in ClackData.
 	 * 
-	 * @return
+	 * @return data
 	 */
 	public abstract String getData();
 	
