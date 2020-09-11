@@ -9,10 +9,24 @@ public class ClackServer {
 	 */
 	public static final Integer DEFAULT_PORT = 7000;
 
-	// ClackServer variables
+	/**
+	 * Integer representing port number on server connected to. Can only be set during class construction and can be retrieved using the getPort() method.
+	 */
 	private Integer port;
+	
+	/**
+	 * Boolean representing whether connection is closed or not. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 */
 	private Boolean closeConnection;
+	
+	/**
+	 * ClackData object representing data received from the client. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 */
 	private ClackData dataToReceieveFromClient;
+	
+	/**
+	 * ClackData object representing data sent to client. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 */
 	private ClackData dataToSendToClient;
 
 	/**
