@@ -43,7 +43,7 @@ public class FileClackData extends ClackData {
 	 * @return
 	 */
 	public String getFileName() {
-		return this.fileName;
+		return fileName;
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class FileClackData extends ClackData {
 	 * @return
 	 */
 	public String getData() {
-		return this.fileContents;
+		return fileContents;
 	}
 
 	/**
