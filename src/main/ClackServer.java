@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Objects;
+
 import data.ClackData;
 
 public class ClackServer {
@@ -77,13 +79,7 @@ public class ClackServer {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((closeConnection == null) ? 0 : closeConnection.hashCode());
-		result = prime * result + ((dataToReceieveFromClient == null) ? 0 : dataToReceieveFromClient.hashCode());
-		result = prime * result + ((dataToSendToClient == null) ? 0 : dataToSendToClient.hashCode());
-		result = prime * result + ((port == null) ? 0 : port.hashCode());
-		return result;
+		return Objects.hash(closeConnection, dataToReceieveFromClient, dataToSendToClient, port);
 	}
 
 	@Override
@@ -95,27 +91,9 @@ public class ClackServer {
 		if (getClass() != obj.getClass())
 			return false;
 		ClackServer other = (ClackServer) obj;
-		if (closeConnection == null) {
-			if (other.closeConnection != null)
-				return false;
-		} else if (!closeConnection.equals(other.closeConnection))
-			return false;
-		if (dataToReceieveFromClient == null) {
-			if (other.dataToReceieveFromClient != null)
-				return false;
-		} else if (!dataToReceieveFromClient.equals(other.dataToReceieveFromClient))
-			return false;
-		if (dataToSendToClient == null) {
-			if (other.dataToSendToClient != null)
-				return false;
-		} else if (!dataToSendToClient.equals(other.dataToSendToClient))
-			return false;
-		if (port == null) {
-			if (other.port != null)
-				return false;
-		} else if (!port.equals(other.port))
-			return false;
-		return true;
+		return Objects.equals(closeConnection, other.closeConnection)
+				&& Objects.equals(dataToReceieveFromClient, other.dataToReceieveFromClient)
+				&& Objects.equals(dataToSendToClient, other.dataToSendToClient) && Objects.equals(port, other.port);
 	}
 
 	@Override
