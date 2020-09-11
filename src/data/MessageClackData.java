@@ -3,7 +3,7 @@ package data;
 public class MessageClackData extends ClackData {
 
 	// ClackData variables
-	String message;
+	private String message;
 
 	/**
 	 * Constructor that accepts a userName, message and type
