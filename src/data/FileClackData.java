@@ -77,7 +77,7 @@ public class FileClackData extends ClackData {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(fileContents, fileName);
+		return Objects.hash(fileContents, fileName, getUserName(), getType(), getDate());
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class FileClackData extends ClackData {
 		if (getClass() != obj.getClass())
 			return false;
 		FileClackData other = (FileClackData) obj;
-		return Objects.equals(fileContents, other.fileContents) && Objects.equals(fileName, other.fileName);
+		return Objects.equals(fileContents, other.fileContents) && Objects.equals(fileName, other.fileName) && Objects.equals(getUserName(), other.getUserName()) && Objects.equals(getType(), other.getType()) && Objects.equals(getDate(), other.getDate());
 	}
 
 	@Override
