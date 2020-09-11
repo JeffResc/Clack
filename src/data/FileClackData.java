@@ -91,4 +91,9 @@ public class FileClackData extends ClackData {
 			return false;
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return "This is a FileClackData with fileName = " + getPort() + " and fileContents = " + getData();
+	}
 }
