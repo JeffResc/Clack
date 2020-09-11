@@ -10,10 +10,10 @@ public class ClackServer {
 	public static final Integer DEFAULT_PORT = 7000;
 
 	// ClackServer variables
-	Integer port;
-	Boolean closeConnection;
-	ClackData dataToReceieveFromClient;
-	ClackData dataToSendToClient;
+	private Integer port;
+	private Boolean closeConnection;
+	private ClackData dataToReceieveFromClient;
+	private ClackData dataToSendToClient;
 
 	/**
 	 * Constructor that accepts a port
