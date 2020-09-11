@@ -11,7 +11,7 @@ Team Members: Nathan Collinsworth and Jeffrey Rescignano
 
 *In your test classes, what happens if you provide a negative value for a port number, or a null value for a user? How do you think you can fix these issues?*
 
-**Needs to be finished.**
+In the test classes, if a negative or null value was given for a port number, the ClackClient and ClackServer classes would simply accept the negative or null value. In the future, these issues could be addressed by having a check in the constructor in order to ensure that the given port number is valid (not null or negative). This way, a new ClackClient or ClackServer could not be initialized with an invalid port. Since port is a private variable and cannot be set using a method, a check would only need to be created in the constructor method.
 
 ## Note About Documentation
 Documentation is available online at [https://JeffResc.dev/Clack](https://jeffresc.dev/Clack) and is automatically deployed from the [/docs](https://github.com/JeffResc/Clack/tree/master/docs) directory.
