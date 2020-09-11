@@ -63,21 +63,45 @@ public class ClackServer {
 
 	@Override
 	public int hashCode() {
-		// Not sure if this implementation is correct, may need to be fixed in the
-		// future
-		return 0x20;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((closeConnection == null) ? 0 : closeConnection.hashCode());
+		result = prime * result + ((dataToReceieveFromClient == null) ? 0 : dataToReceieveFromClient.hashCode());
+		result = prime * result + ((dataToSendToClient == null) ? 0 : dataToSendToClient.hashCode());
+		result = prime * result + ((port == null) ? 0 : port.hashCode());
+		return result;
 	}
 
 	@Override
-	public boolean equals(Object other) {
-		if (other == null)
-			if (!(other instanceof ClackServer))
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ClackServer other = (ClackServer) obj;
+		if (closeConnection == null) {
+			if (other.closeConnection != null)
 				return false;
-
-		ClackServer otherClackServer = (ClackServer) other;
-		return this.port == otherClackServer.getPort() && this.closeConnection == otherClackServer.closeConnection
-				&& this.dataToReceieveFromClient == otherClackServer.dataToReceieveFromClient
-				&& this.dataToSendToClient == otherClackServer.dataToSendToClient;
+		} else if (!closeConnection.equals(other.closeConnection))
+			return false;
+		if (dataToReceieveFromClient == null) {
+			if (other.dataToReceieveFromClient != null)
+				return false;
+		} else if (!dataToReceieveFromClient.equals(other.dataToReceieveFromClient))
+			return false;
+		if (dataToSendToClient == null) {
+			if (other.dataToSendToClient != null)
+				return false;
+		} else if (!dataToSendToClient.equals(other.dataToSendToClient))
+			return false;
+		if (port == null) {
+			if (other.port != null)
+				return false;
+		} else if (!port.equals(other.port))
+			return false;
+		return true;
 	}
 
 	@Override
