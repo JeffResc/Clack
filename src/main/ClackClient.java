@@ -43,6 +43,10 @@ public class ClackClient {
 
 	/**
 	 * Constructor that accepts a userName, hostName and port.
+	 * 
+	 * @param userName userName
+	 * @param hostName hostName
+	 * @param port port
 	 */
 	public ClackClient(String userName, String hostName, Integer port) {
 		this.userName = userName;
@@ -52,6 +56,9 @@ public class ClackClient {
 
 	/**
 	 * Constructor that accepts a userName and hostName.
+	 * 
+	 * @param userName userName
+	 * @param hostName hostName
 	 */
 	public ClackClient(String userName, String hostName) {
 		this(userName, hostName, new Integer(DEFAULT_PORT));
@@ -59,6 +66,8 @@ public class ClackClient {
 
 	/**
 	 * Constructor that accepts a userName.
+	 * 
+	 * @param userName userName
 	 */
 	public ClackClient(String userName) {
 		this(userName, "localhost");
@@ -73,8 +82,6 @@ public class ClackClient {
 
 	/**
 	 * Does not return anything, for now it should have no code, just a declaration.
-	 * 
-	 * @return
 	 */
 	public void start() {
 
@@ -114,6 +121,7 @@ public class ClackClient {
 
 	/**
 	 * Returns userName.
+	 * @return userName
 	 */
 	public String getUserName() {
 		return userName;
@@ -121,6 +129,7 @@ public class ClackClient {
 
 	/**
 	 * Returns hostName.
+	 * @return hostName
 	 */
 	public String getHostName() {
 		return hostName;
@@ -128,16 +137,23 @@ public class ClackClient {
 
 	/**
 	 * Returns port.
+	 * @return port
 	 */
 	public Integer getPort() {
 		return port;
 	}
 
+	/**
+	 * Implements hashCode() functionality for this class and it's superclass' variables.
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(closeConnection, dataToReceieveFromServer, dataToSendToServer, hostName, port, userName);
 	}
 
+	/**
+	 * Implements equals() functionality for this class and it's superclass' variables.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -154,6 +170,9 @@ public class ClackClient {
 				&& Objects.equals(userName, other.userName);
 	}
 
+	/**
+	 * Implements toString() functionality for this class' variables.
+	 */
 	@Override
 	public String toString() {
 		return "ClackClient [userName=" + userName + ", hostName=" + hostName + ", port=" + port + ", closeConnection="
