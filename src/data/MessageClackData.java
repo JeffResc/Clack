@@ -52,11 +52,7 @@ public class MessageClackData extends ClackData {
 
 	@Override
 	public String toString() {
-		/*
-		 * Overridden from the super class Object when you print
-		 * out an object it looks for the toString method which is
-		 */
-		return "message: " + message;
+		return "MessageClackData [message=" + message + "]";
 	}
 	
 }
