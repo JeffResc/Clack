@@ -111,22 +111,57 @@ public class ClackClient {
 
 	@Override
 	public int hashCode() {
-		// Not sure if this implementation is correct, may need to be fixed in the
-		// future
-		return 0x20;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((closeConnection == null) ? 0 : closeConnection.hashCode());
+		result = prime * result + ((dataToReceieveFromServer == null) ? 0 : dataToReceieveFromServer.hashCode());
+		result = prime * result + ((dataToSendToServer == null) ? 0 : dataToSendToServer.hashCode());
+		result = prime * result + ((hostName == null) ? 0 : hostName.hashCode());
+		result = prime * result + ((port == null) ? 0 : port.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		return result;
 	}
 
 	@Override
-	public boolean equals(Object other) {
-		if (other == null)
-			if (!(other instanceof ClackClient))
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ClackClient other = (ClackClient) obj;
+		if (closeConnection == null) {
+			if (other.closeConnection != null)
 				return false;
-
-		ClackClient otherClackClient = (ClackClient) other;
-		return this.userName == otherClackClient.userName && this.hostName == otherClackClient.hostName
-				&& this.port == otherClackClient.port && this.closeConnection == otherClackClient.closeConnection
-				&& this.dataToSendToServer == otherClackClient.dataToSendToServer
-				&& this.dataToReceieveFromServer == otherClackClient.dataToReceieveFromServer;
+		} else if (!closeConnection.equals(other.closeConnection))
+			return false;
+		if (dataToReceieveFromServer == null) {
+			if (other.dataToReceieveFromServer != null)
+				return false;
+		} else if (!dataToReceieveFromServer.equals(other.dataToReceieveFromServer))
+			return false;
+		if (dataToSendToServer == null) {
+			if (other.dataToSendToServer != null)
+				return false;
+		} else if (!dataToSendToServer.equals(other.dataToSendToServer))
+			return false;
+		if (hostName == null) {
+			if (other.hostName != null)
+				return false;
+		} else if (!hostName.equals(other.hostName))
+			return false;
+		if (port == null) {
+			if (other.port != null)
+				return false;
+		} else if (!port.equals(other.port))
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		return true;
 	}
 
 	@Override
