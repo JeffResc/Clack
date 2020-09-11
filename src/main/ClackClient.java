@@ -5,20 +5,42 @@ import data.ClackData;
 public class ClackClient {
 
 	/**
-	 * Sets default port
+	 * Sets default port.
 	 */
 	public static final Integer DEFAULT_PORT = 7000;
 
-	// ClackData variables
+	/**
+	 * String representing name of the client. Can only be set during class construction and can be retrieved using the getUserName() method.
+	 */
 	private String userName;
+	
+	/**
+	 * String representing name of the computer representing the server. Can only be set during class construction and can be retrieved using the getHostName() method.
+	 */
 	private String hostName;
+	
+	/**
+	 * Integer representing port number on server connected to. Can only be set during class construction and can be retrieved using the getPort() method.
+	 */
 	private Integer port;
+	
+	/**
+	 * Boolean representing whether connection is closed or not. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 */
 	private Boolean closeConnection;
+	
+	/**
+	 * ClackData object representing data sent to server. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 */
 	private ClackData dataToSendToServer;
+	
+	/**
+	 * ClackData object representing data received from the server. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 */
 	private ClackData dataToReceieveFromServer;
 
 	/**
-	 * Constructor that accepts a userName, hostName and port
+	 * Constructor that accepts a userName, hostName and port.
 	 */
 	public ClackClient(String userName, String hostName, Integer port) {
 		this.userName = userName;
@@ -27,28 +49,28 @@ public class ClackClient {
 	}
 
 	/**
-	 * Constructor that accepts a userName and hostName
+	 * Constructor that accepts a userName and hostName.
 	 */
 	public ClackClient(String userName, String hostName) {
 		this(userName, hostName, new Integer(DEFAULT_PORT));
 	}
 
 	/**
-	 * Constructor that accepts a userName
+	 * Constructor that accepts a userName.
 	 */
 	public ClackClient(String userName) {
 		this(userName, "localhost");
 	}
 
 	/**
-	 * Default constructor
+	 * Default constructor.
 	 */
 	public ClackClient() {
 		this("Anon");
 	}
 
 	/**
-	 * does not return anything, for now it should have no code, just a declaration
+	 * Does not return anything, for now it should have no code, just a declaration.
 	 * 
 	 * @return
 	 */
@@ -57,53 +79,53 @@ public class ClackClient {
 	}
 
 	/**
-	 * reads the data from the client, does not return anything, for now it should
-	 * have no code, just a declaration
+	 * Reads the data from the client, does not return anything, for now it should
+	 * have no code, just a declaration.
 	 */
 	public void readClientData() {
 
 	}
 
 	/**
-	 * sends data to server, does not return anything, for now it should have no
-	 * code, just a declaration
+	 * Sends data to server, does not return anything, for now it should have no
+	 * code, just a declaration.
 	 */
 	public void sendData() {
 
 	}
 
 	/**
-	 * receives data from the server, does not return anything for now it should
-	 * have no code, just a declaration
+	 * Receives data from the server, does not return anything for now it should
+	 * have no code, just a declaration.
 	 */
 	public void receiveData() {
 
 	}
 
 	/**
-	 * prints the received data to standard output, for now it should have no code,
-	 * just a declaration
+	 * Prints the received data to standard output, for now it should have no code,
+	 * just a declaration.
 	 */
 	public void printData() {
 
 	}
 
 	/**
-	 * Returns userName
+	 * Returns userName.
 	 */
 	public String getUserName() {
 		return userName;
 	}
 
 	/**
-	 * Returns hostName
+	 * Returns hostName.
 	 */
 	public String getHostName() {
 		return hostName;
 	}
 
 	/**
-	 * Returns port
+	 * Returns port.
 	 */
 	public Integer getPort() {
 		return port;
