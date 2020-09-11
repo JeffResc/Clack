@@ -10,12 +10,12 @@ public class ClackClient {
 	public static final Integer DEFAULT_PORT = 7000;
 
 	// ClackData variables
-	String userName;
-	String hostName;
-	Integer port;
-	Boolean closeConnection;
-	ClackData dataToSendToServer;
-	ClackData dataToReceieveFromServer;
+	private String userName;
+	private String hostName;
+	private Integer port;
+	private Boolean closeConnection;
+	private ClackData dataToSendToServer;
+	private ClackData dataToReceieveFromServer;
 
 	/**
 	 * Constructor that accepts a userName, hostName and port
