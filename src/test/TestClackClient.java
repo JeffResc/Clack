@@ -11,6 +11,7 @@ public class TestClackClient {
 		System.out.println(ClackClient1.getHostName());
 		System.out.println(ClackClient1.getPort());
 		System.out.println(ClackClient1.toString());
+		System.out.println(ClackClient1.hashCode());
 		System.out.println("");
 
 		System.out.println("ClackClient2:");
@@ -20,6 +21,7 @@ public class TestClackClient {
 		System.out.println(ClackClient2.getPort());
 		System.out.println(ClackClient2.toString());
 		System.out.println(ClackClient2.equals(ClackClient1));
+		System.out.println(ClackClient2.hashCode());
 		System.out.println("");
 
 		System.out.println("ClackClient3:");
@@ -29,6 +31,7 @@ public class TestClackClient {
 		System.out.println(ClackClient3.getPort());
 		System.out.println(ClackClient3.toString());
 		System.out.println(ClackClient3.equals(ClackClient1));
+		System.out.println(ClackClient3.hashCode());
 		System.out.println("");
 
 		System.out.println("ClackClient4:");
@@ -37,6 +40,7 @@ public class TestClackClient {
 		System.out.println(ClackClient4.getHostName());
 		System.out.println(ClackClient4.getPort());
 		System.out.println(ClackClient4.toString());
+		System.out.println(ClackClient4.hashCode());
 	}
 	
 }
