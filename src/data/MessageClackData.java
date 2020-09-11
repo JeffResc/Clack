@@ -2,11 +2,13 @@ package data;
 
 public class MessageClackData extends ClackData {
 
-	// ClackData variables
+	/**
+	 * String representing instant message. Can only be set during class construction and can be retrieved using the getData() method.
+	 */
 	private String message;
 
 	/**
-	 * Constructor that accepts a userName, message and type
+	 * Constructor that accepts a userName, message and type.
 	 */
 	public MessageClackData(String userName, String message, Integer type) {
 		super(userName, type);
@@ -14,14 +16,14 @@ public class MessageClackData extends ClackData {
 	}
 
 	/**
-	 * Default constructor
+	 * Default constructor.
 	 */
 	public MessageClackData() {
 		this("Anon", null, CONSTANT_DEFAULT_TYPE);
 	}
 
 	/**
-	 * Returns the method
+	 * Returns the method.
 	 * 
 	 * @return
 	 */
@@ -55,8 +57,11 @@ public class MessageClackData extends ClackData {
 	}
 
 	@Override
-	public String toString() { // when you print out an object it looks for the toString method which is
-								// overridden from the super class Object
+	public String toString() {
+		/*
+		 * Overridden from the super class Object when you print
+		 * out an object it looks for the toString method which is
+		 */
 		return "message: " + message;
 	}
 	
