@@ -33,6 +33,8 @@ public class ClackServer {
 
 	/**
 	 * Constructor that accepts a port
+	 * 
+	 * @param port port
 	 */
 	public ClackServer(Integer port) {
 		this.port = port;
@@ -46,9 +48,7 @@ public class ClackServer {
 	}
 
 	/**
-	 * does not return anything, for now it should have no code, just a declaration
-	 * 
-	 * @return
+	 * Does not return anything, for now it should have no code, just a declaration
 	 */
 	public void start() {
 
@@ -72,16 +72,24 @@ public class ClackServer {
 
 	/**
 	 * Returns port
+	 * 
+	 * @return port
 	 */
 	public Integer getPort() {
 		return port;
 	}
 
+	/**
+	 * Implements hashCode() functionality for this class and it's superclass' variables.
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(closeConnection, dataToReceieveFromClient, dataToSendToClient, port);
 	}
 
+	/**
+	 * Implements equals() functionality for this class and it's superclass' variables.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -96,6 +104,9 @@ public class ClackServer {
 				&& Objects.equals(dataToSendToClient, other.dataToSendToClient) && Objects.equals(port, other.port);
 	}
 
+	/**
+	 * Implements toString() functionality for this class' variables.
+	 */
 	@Override
 	public String toString() {
 		return "ClackServer [port=" + port + ", closeConnection=" + closeConnection + ", dataToReceieveFromClient="
