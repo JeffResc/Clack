@@ -14,6 +14,7 @@ public class TestClackData {
 		System.out.println(ClackData1.getDate());
 		System.out.println(ClackData1.getData());
 		System.out.println(ClackData1.toString());
+		System.out.println(ClackData1.hashCode());
 		System.out.println("");
 
 		System.out.println("ClackData2:");
@@ -24,6 +25,7 @@ public class TestClackData {
 		System.out.println(ClackData2.getData());
 		System.out.println(ClackData2.toString());
 		System.out.println(ClackData2.equals(ClackData1));
+		System.out.println(ClackData2.hashCode());
 		System.out.println("");
 		
 		System.out.println("ClackData3:");
@@ -33,6 +35,7 @@ public class TestClackData {
 		System.out.println(ClackData3.getDate());
 		System.out.println(ClackData3.getData());
 		System.out.println(ClackData3.toString());
+		System.out.println(ClackData3.hashCode());
 		System.out.println("");
 		
 		System.out.println("ClackData4:");
@@ -43,6 +46,7 @@ public class TestClackData {
 		System.out.println(ClackData4.getData());
 		System.out.println(ClackData4.toString());
 		System.out.println(ClackData4.equals(ClackData3));
+		System.out.println(ClackData4.hashCode());
 		System.out.println("");
 	}
 }

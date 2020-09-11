@@ -9,6 +9,7 @@ public class TestClackServer {
 		ClackServer ClackServer1 = new ClackServer();
 		System.out.println(ClackServer1.getPort());
 		System.out.println(ClackServer1.toString());
+		System.out.println(ClackServer1.hashCode());
 		System.out.println("");
 
 		System.out.println("ClackServer2:");
@@ -16,6 +17,7 @@ public class TestClackServer {
 		System.out.println(ClackServer2.getPort());
 		System.out.println(ClackServer2.toString());
 		System.out.println(ClackServer2.equals(ClackServer1));
+		System.out.println(ClackServer2.hashCode());
 	}
 	
 }
