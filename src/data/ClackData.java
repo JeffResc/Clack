@@ -90,4 +90,5 @@ public abstract class ClackData {
 	 * @return
 	 */
 	public abstract String getData();
+	
 }

@@ -169,4 +169,5 @@ public class ClackClient {
 		return "This is a ClackClient with userName = " + getUserName() + ", hostName = " + getHostName() + ", port = "
 				+ getPort();
 	}
+	
 }

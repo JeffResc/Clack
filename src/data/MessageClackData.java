@@ -1,7 +1,7 @@
 package data;
 
 public class MessageClackData extends ClackData {
-	
+
 	// ClackData variables
 	String message;
 
@@ -19,9 +19,10 @@ public class MessageClackData extends ClackData {
 	public MessageClackData() {
 		this("Anon", null, CONSTANT_DEFAULT_TYPE);
 	}
-	
+
 	/**
 	 * Returns the method
+	 * 
 	 * @return
 	 */
 	public String getData() {
@@ -54,7 +55,9 @@ public class MessageClackData extends ClackData {
 	}
 
 	@Override
-	public String toString() { // when you print out an object it looks for the toString method which is overridden from the super class Object 
-		return "message: " + message; 
+	public String toString() { // when you print out an object it looks for the toString method which is
+								// overridden from the super class Object
+		return "message: " + message;
 	}
+	
 }

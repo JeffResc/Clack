@@ -21,7 +21,7 @@ public class ClackServer {
 	public ClackServer(Integer port) {
 		this.port = port;
 	}
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -108,4 +108,5 @@ public class ClackServer {
 	public String toString() {
 		return "This is a ClackServer with port = " + getPort();
 	}
+	
 }

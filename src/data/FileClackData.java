@@ -1,64 +1,70 @@
 package data;
 
 public class FileClackData extends ClackData {
-	
+
 	// FileClackData variables
 	private String fileName;
 	private String fileContents;
-	
+
 	/**
 	 * Constructor that accepts a userName, fileName and type
 	 */
-	public FileClackData(String userName, String fileName, Integer type){
+	public FileClackData(String userName, String fileName, Integer type) {
 		super(userName, type);
 		this.fileName = fileName;
 		this.fileContents = null;
 	}
-	
+
 	/**
 	 * Default constructor
 	 */
 	public FileClackData() {
 		super();
 	}
-	
+
 	/**
 	 * Sets fileName
 	 */
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-	
+
 	/**
 	 * Returns fileName
+	 * 
 	 * @return
 	 */
 	public String getFileName() {
 		return this.fileName;
 	}
-	
+
 	/**
 	 * Returns fileContents
+	 * 
 	 * @return
 	 */
 	public String getData() {
 		return this.fileContents;
 	}
-	
+
 	/**
-	 * Reads the file contents does not return anything, for now it should have no code, just a declaration
+	 * Reads the file contents does not return anything, for now it should have no
+	 * code, just a declaration
+	 * 
 	 * @return
 	 */
 	public void readFileContents() {
-		//needs to be set
+		// needs to be set
 	}
-	
+
 	/**
-	 * Writes the file contents does not return anything, for now it should have no code, just a declaration
+	 * Writes the file contents does not return anything, for now it should have no
+	 * code, just a declaration
+	 * 
 	 * @return
 	 */
 	public void writeFileContents() {
-		//needs to be set
+		// needs to be set
 	}
 
 	@Override
@@ -91,9 +97,10 @@ public class FileClackData extends ClackData {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "This is a FileClackData with fileName = " + getPort() + " and fileContents = " + getData();
 	}
+	
 }
