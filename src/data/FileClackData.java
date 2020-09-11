@@ -2,12 +2,18 @@ package data;
 
 public class FileClackData extends ClackData {
 
-	// FileClackData variables
+	/**
+	 * String representing name of file. Can only be set during class construction and can be retrieved using the getFileName() method.
+	 */
 	private String fileName;
+	
+	/**
+	 * String representing contents of file. Can only be set using the setFileName() method and retrieved using the getData() method.
+	 */
 	private String fileContents;
 
 	/**
-	 * Constructor that accepts a userName, fileName and type
+	 * Constructor that accepts a userName, fileName and type.
 	 */
 	public FileClackData(String userName, String fileName, Integer type) {
 		super(userName, type);
@@ -16,21 +22,21 @@ public class FileClackData extends ClackData {
 	}
 
 	/**
-	 * Default constructor
+	 * Default constructor.
 	 */
 	public FileClackData() {
 		super();
 	}
 
 	/**
-	 * Sets fileName
+	 * Sets fileName.
 	 */
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
 
 	/**
-	 * Returns fileName
+	 * Returns fileName.
 	 * 
 	 * @return
 	 */
@@ -39,7 +45,7 @@ public class FileClackData extends ClackData {
 	}
 
 	/**
-	 * Returns fileContents
+	 * Returns fileContents.
 	 * 
 	 * @return
 	 */
@@ -49,7 +55,7 @@ public class FileClackData extends ClackData {
 
 	/**
 	 * Reads the file contents does not return anything, for now it should have no
-	 * code, just a declaration
+	 * code, just a declaration.
 	 * 
 	 * @return
 	 */
@@ -59,7 +65,7 @@ public class FileClackData extends ClackData {
 
 	/**
 	 * Writes the file contents does not return anything, for now it should have no
-	 * code, just a declaration
+	 * code, just a declaration.
 	 * 
 	 * @return
 	 */
