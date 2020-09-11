@@ -156,8 +156,9 @@ public class ClackClient {
 
 	@Override
 	public String toString() {
-		return "This is a ClackClient with userName = " + getUserName() + ", hostName = " + getHostName() + ", port = "
-				+ getPort();
+		return "ClackClient [userName=" + userName + ", hostName=" + hostName + ", port=" + port + ", closeConnection="
+				+ closeConnection + ", dataToSendToServer=" + dataToSendToServer + ", dataToReceieveFromServer="
+				+ dataToReceieveFromServer + "]";
 	}
 	
 }
