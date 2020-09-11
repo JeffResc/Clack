@@ -30,9 +30,9 @@ public abstract class ClackData {
 	public static final int CONSTANT_SENDFILE = 3;
 
 	// ClackData variables
-	String userName;
-	Integer type;
-	Date date;
+	private String userName;
+	private Integer type;
+	private Date date;
 
 	/**
 	 * Constructor that accepts a userName and type
