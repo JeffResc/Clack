@@ -60,17 +60,35 @@ public class FileClackData extends ClackData {
 	public void writeFileContents() {
 		//needs to be set
 	}
-	
-	
+
 	@Override
-	public boolean equals (Object other) {
-		if ( other == null) return false; // makes sure the other object isnt null
-		if ( !(other instanceof FileClackData)) return false; // makes sure that the other object points to an object of the same type
-		
-		FileClackData otherFileClackData = (FileClackData)other; // creates a circle object and sets it = to the other object
-		
-		return this.fileName == otherFileClackData.getFileName() && 
-				this.fileContents == otherFileClackData.getData();
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((fileContents == null) ? 0 : fileContents.hashCode());
+		result = prime * result + ((fileName == null) ? 0 : fileName.hashCode());
+		return result;
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FileClackData other = (FileClackData) obj;
+		if (fileContents == null) {
+			if (other.fileContents != null)
+				return false;
+		} else if (!fileContents.equals(other.fileContents))
+			return false;
+		if (fileName == null) {
+			if (other.fileName != null)
+				return false;
+		} else if (!fileName.equals(other.fileName))
+			return false;
+		return true;
+	}
 }
