@@ -16,6 +16,10 @@ public class FileClackData extends ClackData {
 
 	/**
 	 * Constructor that accepts a userName, fileName and type.
+	 * 
+	 * @param userName userName
+	 * @param fileName fileName
+	 * @param type type
 	 */
 	public FileClackData(String userName, String fileName, Integer type) {
 		super(userName, type);
@@ -32,6 +36,8 @@ public class FileClackData extends ClackData {
 
 	/**
 	 * Sets fileName.
+	 * 
+	 * @param fileName fileName
 	 */
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
@@ -40,7 +46,7 @@ public class FileClackData extends ClackData {
 	/**
 	 * Returns fileName.
 	 * 
-	 * @return
+	 * @return fileName
 	 */
 	public String getFileName() {
 		return fileName;
@@ -49,7 +55,7 @@ public class FileClackData extends ClackData {
 	/**
 	 * Returns fileContents.
 	 * 
-	 * @return
+	 * @return fileContents
 	 */
 	public String getData() {
 		return fileContents;
@@ -58,8 +64,6 @@ public class FileClackData extends ClackData {
 	/**
 	 * Reads the file contents does not return anything, for now it should have no
 	 * code, just a declaration.
-	 * 
-	 * @return
 	 */
 	public void readFileContents() {
 		// needs to be set
@@ -68,18 +72,22 @@ public class FileClackData extends ClackData {
 	/**
 	 * Writes the file contents does not return anything, for now it should have no
 	 * code, just a declaration.
-	 * 
-	 * @return
 	 */
 	public void writeFileContents() {
 		// needs to be set
 	}
-
+	
+	/**
+	 * Implements hashCode() functionality for this class and it's superclass' variables.
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(fileContents, fileName, getUserName(), getType(), getDate());
 	}
 
+	/**
+	 * Implements equals() functionality for this class and it's superclass' variables.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -92,6 +100,9 @@ public class FileClackData extends ClackData {
 		return Objects.equals(fileContents, other.fileContents) && Objects.equals(fileName, other.fileName) && Objects.equals(getUserName(), other.getUserName()) && Objects.equals(getType(), other.getType()) && Objects.equals(getDate(), other.getDate());
 	}
 
+	/**
+	 * Implements toString() functionality for this class' variables.
+	 */
 	@Override
 	public String toString() {
 		return "FileClackData [fileName=" + fileName + ", fileContents=" + fileContents + "]";
