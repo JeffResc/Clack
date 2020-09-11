@@ -98,7 +98,8 @@ public class ClackServer {
 
 	@Override
 	public String toString() {
-		return "This is a ClackServer with port = " + getPort();
+		return "ClackServer [port=" + port + ", closeConnection=" + closeConnection + ", dataToReceieveFromClient="
+				+ dataToReceieveFromClient + ", dataToSendToClient=" + dataToSendToClient + "]";
 	}
 	
 }
