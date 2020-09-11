@@ -94,7 +94,7 @@ public class FileClackData extends ClackData {
 
 	@Override
 	public String toString() {
-		return "This is a FileClackData with fileName = " + getFileName() + " and fileContents = " + getData();
+		return "FileClackData [fileName=" + fileName + ", fileContents=" + fileContents + "]";
 	}
 	
 }
