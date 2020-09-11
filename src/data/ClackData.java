@@ -5,37 +5,47 @@ import java.util.Date;
 public abstract class ClackData {
 
 	/**
-	 * A representative constant meaning the default type for the type variable
+	 * A representative constant meaning the default type for the type variable.
 	 */
 	public static final int CONSTANT_DEFAULT_TYPE = -1;
 
 	/**
-	 * A representative constant meaning "List users" for the type variable
+	 * A representative constant meaning "List users" for the type variable.
 	 */
 	public static final int CONSTANT_LISTUSERS = 0;
 
 	/**
-	 * A representative constant meaning "Logout" for the type variable
+	 * A representative constant meaning "Logout" for the type variable.
 	 */
 	public static final int CONSTANT_LOGOUT = 1;
 
 	/**
-	 * A representative constant meaning "Send message" for the type variable
+	 * A representative constant meaning "Send message" for the type variable.
 	 */
 	public static final int CONSTANT_SENDMESSAGE = 2;
 
 	/**
-	 * A representative constant meaning "Send file" for the type variable
+	 * A representative constant meaning "Send file" for the type variable.
 	 */
 	public static final int CONSTANT_SENDFILE = 3;
 
-	// ClackData variables
+	/**
+	 * String representing name of client user. Can only be set during class construction and can be retrieved using the getUserName() method.
+	 */
 	private String userName;
+	
+	/**
+	 * See class constants for additional resources on the type variable. Can only be set during class construction and can be retrieved using the getType() method.
+	 */
 	private Integer type;
+	
+	/**
+	 *  Date object representing date when ClackData object was created. Can only be set during class construction and can be retrieved using the getDate() method.
+	 */
 	private Date date;
 
 	/**
-	 * Constructor that accepts a userName and type
+	 * Constructor that accepts a userName and type.
 	 */
 	public ClackData(String userName, Integer type) {
 		this.userName = userName;
@@ -44,21 +54,21 @@ public abstract class ClackData {
 	}
 
 	/**
-	 * Constructor that accepts a type
+	 * Constructor that accepts a type.
 	 */
 	public ClackData(Integer type) {
 		this("Anon", type);
 	}
 
 	/**
-	 * Default constructor
+	 * Default constructor.
 	 */
 	public ClackData() {
 		this(CONSTANT_DEFAULT_TYPE);
 	}
 
 	/**
-	 * Returns type
+	 * Returns type.
 	 * 
 	 * @return
 	 */
@@ -67,7 +77,7 @@ public abstract class ClackData {
 	}
 
 	/**
-	 * Returns userName
+	 * Returns userName.
 	 * 
 	 * @return
 	 */
@@ -76,7 +86,7 @@ public abstract class ClackData {
 	}
 
 	/**
-	 * Returns date
+	 * Returns date.
 	 * 
 	 * @return
 	 */
@@ -85,7 +95,7 @@ public abstract class ClackData {
 	}
 
 	/**
-	 * Returns the data contained in ClackData
+	 * Returns the data contained in ClackData.
 	 * 
 	 * @return
 	 */
