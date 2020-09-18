@@ -65,7 +65,7 @@ public class MessageClackData extends ClackData {
 	 */
 	@Override
 	public String toString() {
-		return "MessageClackData [message=" + message + "]";
+		return "MessageClackData [message=" + message + ", userName=" + getUserName() + ", type=" + getType() + "]";
 	}
 	
 }
