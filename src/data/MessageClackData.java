@@ -10,6 +10,18 @@ public class MessageClackData extends ClackData {
 	private String message;
 
 	/**
+	 * Constructor that accepts a userName, message, key and type.
+	 * @param userName
+	 * @param message
+	 * @param key
+	 * @param type
+	 */
+	MessageClackData(String userName, String message, String key, int type) {
+		super(userName, type);
+		this.message = encrypt(message, key);
+	}
+	
+	/**
 	 * Constructor that accepts a userName, message and type.
 	 * 
 	 * @param userName userName
