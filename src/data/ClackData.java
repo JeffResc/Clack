@@ -106,4 +106,24 @@ public abstract class ClackData {
 	 */
 	public abstract String getData();
 	
+	/**
+	 * This method takes in an input string to encrypt using a key, and outputs the encrypted string.
+	 * @param inputStringToEncrypt
+	 * @param key
+	 * @return
+	 */
+	protected String encrypt(String inputStringToEncrypt, String key) {
+		
+	}
+	
+	/**
+	 * This method takes in an input string to decrypt using a key, and outputs the decrypted string.
+	 * @param inputStringToDecrypt
+	 * @param key
+	 * @return
+	 */
+	protected String decrypt(String inputStringToDecrypt, String key) {
+		
+	}
+	
 }
