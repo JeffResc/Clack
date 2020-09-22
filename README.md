@@ -1,7 +1,5 @@
 # Clack
 
-[![Docs](https://readthedocs.org/projects/pip/badge/?version=latest&style=for-the-badge)](https://jeffresc.dev/Clack)
-
 Team Members: Nathan Collinsworth and Jeffrey Rescignano
 
 ## Questions
