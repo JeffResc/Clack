@@ -60,6 +60,15 @@ public class FileClackData extends ClackData {
 	public String getData() {
 		return fileContents;
 	}
+	
+	/**
+	 * Returns decrypted fileContents.
+	 * 
+	 * @return fileContents
+	 */
+	public String getData(String key) {
+		return decrypt(fileContents, key);
+	}
 
 	/**
 	 * Reads the file contents does not return anything, for now it should have no
