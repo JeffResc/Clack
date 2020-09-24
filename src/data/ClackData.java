@@ -120,7 +120,7 @@ public abstract class ClackData {
 	 * @return
 	 */
 	protected String encrypt(String inputStringToEncrypt, String key) {
-		
+		return "placeholder";
 	}
 	
 	/**
@@ -130,7 +130,7 @@ public abstract class ClackData {
 	 * @return
 	 */
 	protected String decrypt(String inputStringToDecrypt, String key) {
-		
+		return "placeholder";
 	}
 	
 }

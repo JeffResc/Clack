@@ -1,5 +1,6 @@
 package data;
 
+import java.io.*;
 import java.util.Objects;
 
 public class FileClackData extends ClackData {
@@ -71,19 +72,82 @@ public class FileClackData extends ClackData {
 	}
 
 	/**
-	 * Reads the file contents does not return anything, for now it should have no
-	 * code, just a declaration.
+	 * Reads the file contents does not return anything,
+	 * uses a buffered reader to read from the file fileName and adds each line in the file onto fileContents
+	 * catches ioexceptions
 	 */
-	public void readFileContents() {
-		// needs to be set
+	public void readFileContents() throws IOException{
+		try {
+			BufferedReader myFile = new BufferedReader(new FileReader(fileName));
+			String line = "";
+			fileContents = "";
+			while ((line = myFile.readLine()) != null) {
+				fileContents = fileContents + line;
+			}	
+			myFile.close();
+		} catch(FileNotFoundException fnfe) {
+			System.err.println("File not found");
+		} catch(IOException ioe) {
+			System.err.println("io exception");
+		}
+	}
+	/**
+	 * Reads the file contents does not return anything,
+	 * uses a buffered reader to read from the file fileName encrypts it and adds each line in the file onto fileContents
+	 * catches ioexceptions
+	 */
+	public void readFileContents(String key) throws IOException{
+		try {
+			BufferedReader myFile = new BufferedReader(new FileReader(fileName));
+			String line = "";
+			fileContents = "";
+			while ((line = myFile.readLine()) != null) {
+				line = encrypt(line, key);
+				fileContents = fileContents + line;
+			}	
+			myFile.close();
+		} catch(FileNotFoundException fnfe) {
+			System.err.println("File not found");
+		} catch(IOException ioe) {
+			System.err.println("io exception");
+		} catch(NullPointerException npe) {
+			System.err.println("null pointer exception");
+		}
 	}
 
 	/**
-	 * Writes the file contents does not return anything, for now it should have no
-	 * code, just a declaration.
+	 * Writes the file contents does not return anything,
+	 * uses a bufferedwriter to write to the file fileName from fileContents
 	 */
-	public void writeFileContents() {
-		// needs to be set
+	public void writeFileContents() throws IOException {
+		try {
+			BufferedWriter myfile = new BufferedWriter(new FileWriter(fileName));
+			myfile.write(fileContents, 0, fileContents.length());
+			myfile.close();
+		} catch(FileNotFoundException fnfe) {
+			System.err.println("File not found");
+		} catch(IOException ioe) {
+			System.err.println("io exception");
+		} catch(NullPointerException npe) {
+			System.err.println("null pointer exception");
+		}
+	}
+	/**
+	 * Writes the file contents does not return anything,
+	 * decrypts fileContents and uses a bufferedwriter to write to the file fileName from fileContents
+	 */
+	public void writeFileContents(String key) throws IOException {
+		try {
+			BufferedWriter myfile = new BufferedWriter(new FileWriter(fileName));
+			myfile.write(decrypt(fileContents,key), 0, decrypt(fileContents,key).length());
+			myfile.close();
+		} catch(FileNotFoundException fnfe) {
+			System.err.println("File not found");
+		} catch(IOException ioe) {
+			System.err.println("io exception");
+		} catch(NullPointerException npe) {
+			System.err.println("null pointer exception");
+		}
 	}
 	
 	/**

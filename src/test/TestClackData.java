@@ -1,5 +1,8 @@
 package test;
 
+
+import java.io.IOException;
+
 import data.ClackData;
 import data.FileClackData;
 import data.MessageClackData;
@@ -8,7 +11,20 @@ public class TestClackData {
 
 	public static void main(String args[]) {
 		System.out.println("ClackData1:");
-		ClackData ClackData1 = new FileClackData("Jeff", "Hello, world!", 0);
+		FileClackData ClackData1 = new FileClackData("Jeff", "C:\\Users\\dwarv\\git\\Clack\\src\\Part2_document.txt", 0);
+		try {
+			ClackData1.readFileContents("key");
+		} catch(IOException ioe) {
+			System.out.println(ioe);
+		}
+		FileClackData testwrite = new FileClackData("Jeff", "C:\\Users\\dwarv\\desktop\\Part2_testwrite.txt", 0);
+		
+		try {
+			testwrite.writeFileContents("key");
+		} catch(IOException ioe) {
+			System.out.println(ioe);
+		}
+		
 		System.out.println(ClackData1.getType());
 		System.out.println(ClackData1.getUserName());
 		System.out.println(ClackData1.getDate());
@@ -16,6 +32,8 @@ public class TestClackData {
 		System.out.println(ClackData1.toString());
 		System.out.println(ClackData1.hashCode());
 		System.out.println("");
+		
+		System.out.println(testwrite.toString());
 
 		System.out.println("ClackData2:");
 		ClackData ClackData2 = new FileClackData();
