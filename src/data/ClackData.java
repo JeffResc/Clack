@@ -1,6 +1,7 @@
 package data;
 
 import java.util.Date;
+import java.util.Scanner;
 
 public abstract class ClackData {
 
@@ -113,14 +114,60 @@ public abstract class ClackData {
 	 */
 	public abstract String getData(String key);
 	
+	
+	private static int smallestAlphabeticInt(int i) {
+		while(i < 0)
+			i += 26;
+		while(i > 26)
+			i -= 26;
+		if (i == 0)
+			i = 26;
+		return i;
+	}
+	
+	private static char intToChar(int i) {
+		return (char)(i + 96);
+	}
+
+	private static int charToInt(char ch) {
+		return (int)Character.toLowerCase(ch) - 96;
+	}
+	
+	private static char modifyChar(char inputChar, char keyChar, Boolean encrypt) {
+		Boolean capitalize = false;
+		if (Character.isUpperCase(inputChar)) {
+			capitalize = true;
+		}
+		final char new_char = encrypt ? intToChar(smallestAlphabeticInt(charToInt(inputChar) + charToInt(keyChar) - 1)) : intToChar(smallestAlphabeticInt(charToInt(inputChar) - charToInt(keyChar) + 1));
+		return capitalize ? Character.toUpperCase(new_char) : new_char;
+	}
+	
 	/**
 	 * This method takes in an input string to encrypt using a key, and outputs the encrypted string.
 	 * @param inputStringToEncrypt
 	 * @param key
 	 * @return
 	 */
-	protected String encrypt(String inputStringToEncrypt, String key) {
-		return "placeholder";
+	protected static String encrypt(String inputStringToEncrypt, String key) {
+		String t = "";
+		int key_pos_index = 0;
+		for (char ch: inputStringToEncrypt.toCharArray()) {
+			Boolean advance_key = false;
+			if (Character.isLetter(ch)) {
+				advance_key = true;
+				t += modifyChar(ch, key.charAt(key_pos_index), true);
+			} else {
+				t += ch;
+			}
+			if (advance_key) {
+				if (key_pos_index == key.length() - 1) {
+					key_pos_index = 0;
+				} else {
+					key_pos_index++;
+				}
+			}
+		}
+		return t;
 	}
 	
 	/**
@@ -129,8 +176,26 @@ public abstract class ClackData {
 	 * @param key
 	 * @return
 	 */
-	protected String decrypt(String inputStringToDecrypt, String key) {
-		return "placeholder";
+	protected static String decrypt(String inputStringToDecrypt, String key) {
+		String t = "";
+		int key_pos_index = 0;
+		for (char ch: inputStringToDecrypt.toCharArray()) {
+			Boolean advance_key = false;
+			if (Character.isLetter(ch)) {
+				advance_key = true;
+				t += modifyChar(ch, key.charAt(key_pos_index), false);
+			} else {
+				t += ch;
+			}
+			if (advance_key) {
+				if (key_pos_index == key.length() - 1) {
+					key_pos_index = 0;
+				} else {
+					key_pos_index++;
+				}
+			}
+		}
+		return t;
 	}
 	
 }
