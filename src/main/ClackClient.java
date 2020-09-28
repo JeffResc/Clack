@@ -44,6 +44,7 @@ public class ClackClient {
 	 * ClackData object representing data received from the server. This is exclusively an internal variable and cannot be set or retrieved using any methods.
 	 */
 	private ClackData dataToReceieveFromServer;
+	
 	/**
 	 * Scanner object for getting input from user
 	 */
