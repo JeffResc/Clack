@@ -47,6 +47,7 @@ public class TestClackClient {
 			System.out.println(ClackClient4.getPort());
 			System.out.println(ClackClient4.toString());
 			System.out.println(ClackClient4.hashCode());
+			System.out.println("");
 		} catch (IllegalArgumentException e) {
 			System.err.println("Unable to create ClackClient: " + e.getMessage());
 		}
@@ -54,6 +55,7 @@ public class TestClackClient {
 		System.out.println("ClackClient5:");
 		try {
 			ClackClient ClackClient5 = new ClackClient("Jeff", null);
+			System.out.println(ClackClient5.toString());
 		} catch (IllegalArgumentException e) {
 			System.err.println("Unable to create ClackClient: " + e.getMessage());
 		}
@@ -61,6 +63,7 @@ public class TestClackClient {
 		System.out.println("ClackClient6:");
 		try {
 			ClackClient ClackClient6 = new ClackClient("Jeff", "server.jeffresc.dev", 1000);
+			System.out.println(ClackClient6.toString());
 		} catch (IllegalArgumentException e) {
 			System.err.println("Unable to create ClackClient: " + e.getMessage());
 		}
