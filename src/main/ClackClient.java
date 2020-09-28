@@ -98,7 +98,7 @@ public class ClackClient {
 	}
 
 	/**
-	 * Does not return anything, for now it should have no code, just a declaration.
+	 * Does not return anything, but starts the connection, reads data from the client, and prints the data out.
 	 */
 	public void start() {
 		inFromStd = new Scanner(System.in);
@@ -109,8 +109,7 @@ public class ClackClient {
 	}
 
 	/**
-	 * Reads the data from the client, does not return anything, for now it should
-	 * have no code, just a declaration.
+	 * Reads the data from the client, does not return anything.
 	 */
 	public void readClientData() {
 		switch (inFromStd.next()) {
@@ -149,8 +148,7 @@ public class ClackClient {
 	}
 
 	/**
-	 * Prints the received data to standard output, for now it should have no code,
-	 * just a declaration.
+	 * Prints the received data to standard output.
 	 */
 	public void printData() {
 		System.out.println(dataToReceieveFromServer.getUserName());
