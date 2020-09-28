@@ -14,7 +14,7 @@ public class TestClackClient {
 			System.out.println(ClackClient1.toString());
 			System.out.println(ClackClient1.hashCode());
 			System.out.println("");
-			// ClackClient1.start();
+			ClackClient1.start();
 			
 			System.out.println("ClackClient2:");
 			ClackClient ClackClient2 = new ClackClient("Anon");
