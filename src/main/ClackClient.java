@@ -1,8 +1,12 @@
 package main;
 
+import java.io.IOException;
 import java.util.Objects;
+import java.util.Scanner;
 
 import data.ClackData;
+import data.FileClackData;
+import data.MessageClackData;
 
 public class ClackClient {
 
@@ -10,7 +14,7 @@ public class ClackClient {
 	 * Sets default port.
 	 */
 	public static final Integer DEFAULT_PORT = 7000;
-
+	
 	/**
 	 * String representing name of the client. Can only be set during class construction and can be retrieved using the getUserName() method.
 	 */
@@ -40,6 +44,10 @@ public class ClackClient {
 	 * ClackData object representing data received from the server. This is exclusively an internal variable and cannot be set or retrieved using any methods.
 	 */
 	private ClackData dataToReceieveFromServer;
+	/**
+	 * Scanner object for getting input from user
+	 */
+	private Scanner inFromStd;
 
 	/**
 	 * Constructor that accepts a userName, hostName and port.
@@ -84,7 +92,11 @@ public class ClackClient {
 	 * Does not return anything, for now it should have no code, just a declaration.
 	 */
 	public void start() {
-
+		inFromStd = new Scanner(System.in);
+		this.readClientData();
+		inFromStd.close();
+		dataToReceieveFromServer = dataToSendToServer;
+		this.printData();
 	}
 
 	/**
@@ -92,7 +104,23 @@ public class ClackClient {
 	 * have no code, just a declaration.
 	 */
 	public void readClientData() {
-
+		switch (inFromStd.next()) {
+			case "DONE" :
+				closeConnection = true;
+				break;
+			case "SENDFILE" :
+				 dataToSendToServer = new FileClackData(userName, inFromStd.next(), ClackData.CONSTANT_SENDFILE);
+				 try {
+					 ((FileClackData)dataToSendToServer).readFileContents();
+				 } catch(IOException ioe) {
+					 dataToSendToServer = null;
+					 System.err.println(ioe);
+				 }
+				 break;
+			default :
+				dataToSendToServer = new MessageClackData(userName, "", ClackData.CONSTANT_SENDMESSAGE);
+				break;
+		}
 	}
 
 	/**
@@ -116,7 +144,9 @@ public class ClackClient {
 	 * just a declaration.
 	 */
 	public void printData() {
-
+		System.out.println(dataToReceieveFromServer.getUserName());
+		System.out.println(dataToReceieveFromServer.getType());
+		System.out.println(dataToReceieveFromServer.getData());
 	}
 
 	/**

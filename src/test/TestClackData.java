@@ -11,16 +11,18 @@ public class TestClackData {
 
 	public static void main(String args[]) {
 		System.out.println("ClackData1:");
-		FileClackData ClackData1 = new FileClackData("Jeff", "C:\\Users\\dwarv\\git\\Clack\\src\\Part2_document.txt", 0);
+		ClackData ClackData1 = new FileClackData("Jeff", "C:\\Users\\dwarv\\git\\Clack\\src\\Part2_document.txt", 0);
 		try {
-			ClackData1.readFileContents("key");
+			((FileClackData)ClackData1).readFileContents();
 		} catch(IOException ioe) {
 			System.out.println(ioe);
 		}
-		FileClackData testwrite = new FileClackData("Jeff", "C:\\Users\\dwarv\\desktop\\Part2_testwrite.txt", 0);
+		
+		
+		ClackData testwrite = new FileClackData("Jeff", "C:\\Users\\dwarv\\desktop\\Part2_testwrite.txt", 0);
 		
 		try {
-			testwrite.writeFileContents("key");
+			((FileClackData)testwrite).writeFileContents();
 		} catch(IOException ioe) {
 			System.out.println(ioe);
 		}
