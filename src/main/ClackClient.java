@@ -57,6 +57,15 @@ public class ClackClient {
 	 * @param port port
 	 */
 	public ClackClient(String userName, String hostName, Integer port) {
+		if (userName == null) {
+			throw new IllegalArgumentException("userName cannot be null");
+		}
+		if (hostName == null) {
+			throw new IllegalArgumentException("hostName cannot be null");
+		}
+		if (port < 1024) {
+			throw new IllegalArgumentException("port must be greater than 1024");
+		}
 		this.userName = userName;
 		this.hostName = hostName;
 		this.port = port;
