@@ -1,5 +1,8 @@
 package main;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Objects;
 
 import data.ClackData;
@@ -30,6 +33,16 @@ public class ClackServer {
 	 * ClackData object representing data sent to client. This is exclusively an internal variable and cannot be set or retrieved using any methods.
 	 */
 	private ClackData dataToSendToClient;
+	
+	/**
+	 * Input stream that receives data packets from the client.
+	 */
+	private ObjectInputStream inFromClient = null;
+	
+	/**
+	 * Output stream that sends data packets to the client.
+	 */
+	private ObjectOutputStream outToClient = null;
 
 	/**
 	 * Constructor that accepts a port
@@ -59,7 +72,12 @@ public class ClackServer {
 	 * have no code, just a declaration
 	 */
 	public void receiveData() {
-
+		try {
+			dataToReceieveFromClient = (ClackData) inFromClient.readObject();
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -67,7 +85,12 @@ public class ClackServer {
 	 * code, just a declaration
 	 */
 	public void sendData() {
-
+		try {
+			outToClient.writeObject(dataToSendToClient);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
