@@ -3,6 +3,7 @@ package main;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -123,6 +124,15 @@ public class ClackClient {
 	 * client, and prints the data out.
 	 */
 	public void start() {
+		try {
+			Socket skt = new Socket(hostName, port);
+			inFromServer = new ObjectInputStream(skt.getInputStream());
+			outToServer = new ObjectOutputStream(skt.getOutputStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		inFromStd = new Scanner(System.in);
 		this.readClientData();
 		inFromStd.close();
