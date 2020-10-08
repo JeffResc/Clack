@@ -148,7 +148,7 @@ public class ClackClient {
 	 * Sends data to server, does not return anything.
 	 */
 	public void sendData() {
-		 try {
+		try {
 			outToServer.writeObject(dataToSendToServer);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
