@@ -1,6 +1,8 @@
 package main;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -49,6 +51,16 @@ public class ClackClient {
 	 * Scanner object for getting input from user
 	 */
 	private Scanner inFromStd;
+	
+	/**
+	 * Input stream that receives data packets from the server.
+	 */
+	private ObjectInputStream inFromServer = null;
+	
+	/**
+	 * Output stream that sends data packets to the server.
+	 */
+	private ObjectOutputStream outToServer = null;
 
 	/**
 	 * Constructor that accepts a userName, hostName and port.
