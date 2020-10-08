@@ -3,6 +3,8 @@ package main;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Objects;
 
 import data.ClackData;
@@ -72,7 +74,16 @@ public class ClackServer {
 	 * Does not return anything, for now it should have no code, just a declaration
 	 */
 	public void start() {
-
+		try {
+			ServerSocket sskt = new ServerSocket(port);
+			Socket clientSocket = sskt.accept();
+			
+			inFromClient = new ObjectInputStream(clientSocket.getInputStream());
+			outToClient = new ObjectOutputStream(clientSocket.getOutputStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
