@@ -31,17 +31,22 @@ public abstract class ClackData implements java.io.Serializable {
 	public static final int CONSTANT_SENDFILE = 3;
 
 	/**
-	 * String representing name of client user. Can only be set during class construction and can be retrieved using the getUserName() method.
+	 * String representing name of client user. Can only be set during class
+	 * construction and can be retrieved using the getUserName() method.
 	 */
 	private String userName;
-	
+
 	/**
-	 * See class constants for additional resources on the type variable. Can only be set during class construction and can be retrieved using the getType() method.
+	 * See class constants for additional resources on the type variable. Can only
+	 * be set during class construction and can be retrieved using the getType()
+	 * method.
 	 */
 	private Integer type;
-	
+
 	/**
-	 *  Date object representing date when ClackData object was created. Can only be set during class construction and can be retrieved using the getDate() method.
+	 * Date object representing date when ClackData object was created. Can only be
+	 * set during class construction and can be retrieved using the getDate()
+	 * method.
 	 */
 	private Date date;
 
@@ -49,7 +54,7 @@ public abstract class ClackData implements java.io.Serializable {
 	 * Constructor that accepts a userName and type.
 	 * 
 	 * @param userName userName
-	 * @param type type
+	 * @param type     type
 	 */
 	public ClackData(String userName, Integer type) {
 		this.userName = userName;
@@ -106,44 +111,46 @@ public abstract class ClackData implements java.io.Serializable {
 	 * @return data
 	 */
 	public abstract String getData();
-	
+
 	/**
 	 * Returns the decrypted data contained in ClackData.
 	 * 
 	 * @return data
 	 */
 	public abstract String getData(String key);
-	
-	
+
 	private static int smallestAlphabeticInt(int i) {
-		while(i < 0)
+		while (i < 0)
 			i += 26;
-		while(i > 26)
+		while (i > 26)
 			i -= 26;
 		if (i == 0)
 			i = 26;
 		return i;
 	}
-	
+
 	private static char intToChar(int i) {
-		return (char)(i + 96);
+		return (char) (i + 96);
 	}
 
 	private static int charToInt(char ch) {
-		return (int)Character.toLowerCase(ch) - 96;
+		return (int) Character.toLowerCase(ch) - 96;
 	}
-	
+
 	private static char modifyChar(char inputChar, char keyChar, Boolean encrypt) {
 		Boolean capitalize = false;
 		if (Character.isUpperCase(inputChar)) {
 			capitalize = true;
 		}
-		final char new_char = encrypt ? intToChar(smallestAlphabeticInt(charToInt(inputChar) + charToInt(keyChar) - 1)) : intToChar(smallestAlphabeticInt(charToInt(inputChar) - charToInt(keyChar) + 1));
+		final char new_char = encrypt ? intToChar(smallestAlphabeticInt(charToInt(inputChar) + charToInt(keyChar) - 1))
+				: intToChar(smallestAlphabeticInt(charToInt(inputChar) - charToInt(keyChar) + 1));
 		return capitalize ? Character.toUpperCase(new_char) : new_char;
 	}
-	
+
 	/**
-	 * This method takes in an input string to encrypt using a key, and outputs the encrypted string.
+	 * This method takes in an input string to encrypt using a key, and outputs the
+	 * encrypted string.
+	 * 
 	 * @param inputStringToEncrypt
 	 * @param key
 	 * @return
@@ -151,7 +158,7 @@ public abstract class ClackData implements java.io.Serializable {
 	protected static String encrypt(String inputStringToEncrypt, String key) {
 		String t = "";
 		int key_pos_index = 0;
-		for (char ch: inputStringToEncrypt.toCharArray()) {
+		for (char ch : inputStringToEncrypt.toCharArray()) {
 			Boolean advance_key = false;
 			if (Character.isLetter(ch)) {
 				advance_key = true;
@@ -169,9 +176,11 @@ public abstract class ClackData implements java.io.Serializable {
 		}
 		return t;
 	}
-	
+
 	/**
-	 * This method takes in an input string to decrypt using a key, and outputs the decrypted string.
+	 * This method takes in an input string to decrypt using a key, and outputs the
+	 * decrypted string.
+	 * 
 	 * @param inputStringToDecrypt
 	 * @param key
 	 * @return
@@ -179,7 +188,7 @@ public abstract class ClackData implements java.io.Serializable {
 	protected static String decrypt(String inputStringToDecrypt, String key) {
 		String t = "";
 		int key_pos_index = 0;
-		for (char ch: inputStringToDecrypt.toCharArray()) {
+		for (char ch : inputStringToDecrypt.toCharArray()) {
 			Boolean advance_key = false;
 			if (Character.isLetter(ch)) {
 				advance_key = true;
@@ -197,5 +206,5 @@ public abstract class ClackData implements java.io.Serializable {
 		}
 		return t;
 	}
-	
+
 }

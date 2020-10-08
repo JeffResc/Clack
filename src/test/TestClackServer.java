@@ -3,7 +3,7 @@ package test;
 import main.ClackServer;
 
 public class TestClackServer {
-	
+
 	public static void main(String[] args) {
 		System.out.println("ClackServer1:");
 		ClackServer ClackServer1 = new ClackServer();
@@ -19,5 +19,5 @@ public class TestClackServer {
 		System.out.println(ClackServer2.equals(ClackServer1));
 		System.out.println(ClackServer2.hashCode());
 	}
-	
+
 }

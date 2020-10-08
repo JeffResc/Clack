@@ -16,47 +16,55 @@ public class ClackClient {
 	 * Sets default port.
 	 */
 	public static final Integer DEFAULT_PORT = 7000;
-	
+
 	/**
-	 * String representing name of the client. Can only be set during class construction and can be retrieved using the getUserName() method.
+	 * String representing name of the client. Can only be set during class
+	 * construction and can be retrieved using the getUserName() method.
 	 */
 	private String userName;
-	
+
 	/**
-	 * String representing name of the computer representing the server. Can only be set during class construction and can be retrieved using the getHostName() method.
+	 * String representing name of the computer representing the server. Can only be
+	 * set during class construction and can be retrieved using the getHostName()
+	 * method.
 	 */
 	private String hostName;
-	
+
 	/**
-	 * Integer representing port number on server connected to. Can only be set during class construction and can be retrieved using the getPort() method.
+	 * Integer representing port number on server connected to. Can only be set
+	 * during class construction and can be retrieved using the getPort() method.
 	 */
 	private Integer port;
-	
+
 	/**
-	 * Boolean representing whether connection is closed or not. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 * Boolean representing whether connection is closed or not. This is exclusively
+	 * an internal variable and cannot be set or retrieved using any methods.
 	 */
 	private Boolean closeConnection;
-	
+
 	/**
-	 * ClackData object representing data sent to server. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 * ClackData object representing data sent to server. This is exclusively an
+	 * internal variable and cannot be set or retrieved using any methods.
 	 */
 	private ClackData dataToSendToServer;
-	
+
 	/**
-	 * ClackData object representing data received from the server. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 * ClackData object representing data received from the server. This is
+	 * exclusively an internal variable and cannot be set or retrieved using any
+	 * methods.
 	 */
 	private ClackData dataToReceieveFromServer;
-	
+
 	/**
 	 * Scanner object for getting input from user
 	 */
 	private Scanner inFromStd;
-	
+
 	/**
 	 * Input stream that receives data packets from the server.
 	 */
 	private ObjectInputStream inFromServer = null;
-	
+
 	/**
 	 * Output stream that sends data packets to the server.
 	 */
@@ -67,7 +75,7 @@ public class ClackClient {
 	 * 
 	 * @param userName userName
 	 * @param hostName hostName
-	 * @param port port
+	 * @param port     port
 	 */
 	public ClackClient(String userName, String hostName, Integer port) {
 		if (userName == null) {
@@ -111,7 +119,8 @@ public class ClackClient {
 	}
 
 	/**
-	 * Does not return anything, but starts the connection, reads data from the client, and prints the data out.
+	 * Does not return anything, but starts the connection, reads data from the
+	 * client, and prints the data out.
 	 */
 	public void start() {
 		inFromStd = new Scanner(System.in);
@@ -126,21 +135,21 @@ public class ClackClient {
 	 */
 	public void readClientData() {
 		switch (inFromStd.next()) {
-			case "DONE" :
-				closeConnection = true;
-				break;
-			case "SENDFILE" :
-				 dataToSendToServer = new FileClackData(userName, inFromStd.next(), ClackData.CONSTANT_SENDFILE);
-				 try {
-					 ((FileClackData)dataToSendToServer).readFileContents();
-				 } catch(IOException ioe) {
-					 dataToSendToServer = null;
-					 System.err.println(ioe);
-				 }
-				 break;
-			default :
-				dataToSendToServer = new MessageClackData(userName, "", ClackData.CONSTANT_SENDMESSAGE);
-				break;
+		case "DONE":
+			closeConnection = true;
+			break;
+		case "SENDFILE":
+			dataToSendToServer = new FileClackData(userName, inFromStd.next(), ClackData.CONSTANT_SENDFILE);
+			try {
+				((FileClackData) dataToSendToServer).readFileContents();
+			} catch (IOException ioe) {
+				dataToSendToServer = null;
+				System.err.println(ioe);
+			}
+			break;
+		default:
+			dataToSendToServer = new MessageClackData(userName, "", ClackData.CONSTANT_SENDMESSAGE);
+			break;
 		}
 	}
 
@@ -179,6 +188,7 @@ public class ClackClient {
 
 	/**
 	 * Returns userName.
+	 * 
 	 * @return userName
 	 */
 	public String getUserName() {
@@ -187,6 +197,7 @@ public class ClackClient {
 
 	/**
 	 * Returns hostName.
+	 * 
 	 * @return hostName
 	 */
 	public String getHostName() {
@@ -195,6 +206,7 @@ public class ClackClient {
 
 	/**
 	 * Returns port.
+	 * 
 	 * @return port
 	 */
 	public Integer getPort() {
@@ -202,7 +214,8 @@ public class ClackClient {
 	}
 
 	/**
-	 * Implements hashCode() functionality for this class and it's superclass' variables.
+	 * Implements hashCode() functionality for this class and it's superclass'
+	 * variables.
 	 */
 	@Override
 	public int hashCode() {
@@ -210,7 +223,8 @@ public class ClackClient {
 	}
 
 	/**
-	 * Implements equals() functionality for this class and it's superclass' variables.
+	 * Implements equals() functionality for this class and it's superclass'
+	 * variables.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -237,5 +251,5 @@ public class ClackClient {
 				+ closeConnection + ", dataToSendToServer=" + dataToSendToServer + ", dataToReceieveFromServer="
 				+ dataToReceieveFromServer + "]";
 	}
-	
+
 }

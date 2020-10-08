@@ -15,30 +15,35 @@ public class ClackServer {
 	public static final Integer DEFAULT_PORT = 7000;
 
 	/**
-	 * Integer representing port number on server connected to. Can only be set during class construction and can be retrieved using the getPort() method.
+	 * Integer representing port number on server connected to. Can only be set
+	 * during class construction and can be retrieved using the getPort() method.
 	 */
 	private Integer port;
-	
+
 	/**
-	 * Boolean representing whether connection is closed or not. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 * Boolean representing whether connection is closed or not. This is exclusively
+	 * an internal variable and cannot be set or retrieved using any methods.
 	 */
 	private Boolean closeConnection;
-	
+
 	/**
-	 * ClackData object representing data received from the client. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 * ClackData object representing data received from the client. This is
+	 * exclusively an internal variable and cannot be set or retrieved using any
+	 * methods.
 	 */
 	private ClackData dataToReceieveFromClient;
-	
+
 	/**
-	 * ClackData object representing data sent to client. This is exclusively an internal variable and cannot be set or retrieved using any methods.
+	 * ClackData object representing data sent to client. This is exclusively an
+	 * internal variable and cannot be set or retrieved using any methods.
 	 */
 	private ClackData dataToSendToClient;
-	
+
 	/**
 	 * Input stream that receives data packets from the client.
 	 */
 	private ObjectInputStream inFromClient = null;
-	
+
 	/**
 	 * Output stream that sends data packets to the client.
 	 */
@@ -106,7 +111,8 @@ public class ClackServer {
 	}
 
 	/**
-	 * Implements hashCode() functionality for this class and it's superclass' variables.
+	 * Implements hashCode() functionality for this class and it's superclass'
+	 * variables.
 	 */
 	@Override
 	public int hashCode() {
@@ -114,7 +120,8 @@ public class ClackServer {
 	}
 
 	/**
-	 * Implements equals() functionality for this class and it's superclass' variables.
+	 * Implements equals() functionality for this class and it's superclass'
+	 * variables.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -138,5 +145,5 @@ public class ClackServer {
 		return "ClackServer [port=" + port + ", closeConnection=" + closeConnection + ", dataToReceieveFromClient="
 				+ dataToReceieveFromClient + ", dataToSendToClient=" + dataToSendToClient + "]";
 	}
-	
+
 }

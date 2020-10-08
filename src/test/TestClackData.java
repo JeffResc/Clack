@@ -1,6 +1,5 @@
 package test;
 
-
 import java.io.IOException;
 
 import data.ClackData;
@@ -13,20 +12,19 @@ public class TestClackData {
 		System.out.println("ClackData1:");
 		ClackData ClackData1 = new FileClackData("Jeff", "C:\\Users\\dwarv\\git\\Clack\\src\\Part2_document.txt", 0);
 		try {
-			((FileClackData)ClackData1).readFileContents();
-		} catch(IOException ioe) {
+			((FileClackData) ClackData1).readFileContents();
+		} catch (IOException ioe) {
 			System.out.println(ioe);
 		}
-		
-		
+
 		ClackData testwrite = new FileClackData("Jeff", "C:\\Users\\dwarv\\desktop\\Part2_testwrite.txt", 0);
-		
+
 		try {
-			((FileClackData)testwrite).writeFileContents();
-		} catch(IOException ioe) {
+			((FileClackData) testwrite).writeFileContents();
+		} catch (IOException ioe) {
 			System.out.println(ioe);
 		}
-		
+
 		System.out.println(ClackData1.getType());
 		System.out.println(ClackData1.getUserName());
 		System.out.println(ClackData1.getDate());
@@ -34,7 +32,7 @@ public class TestClackData {
 		System.out.println(ClackData1.toString());
 		System.out.println(ClackData1.hashCode());
 		System.out.println("");
-		
+
 		System.out.println(testwrite.toString());
 
 		System.out.println("ClackData2:");
@@ -47,7 +45,7 @@ public class TestClackData {
 		System.out.println(ClackData2.equals(ClackData1));
 		System.out.println(ClackData2.hashCode());
 		System.out.println("");
-		
+
 		System.out.println("ClackData3:");
 		ClackData ClackData3 = new MessageClackData("Jeff", "Hello, world!", 0);
 		System.out.println(ClackData3.getType());
@@ -57,7 +55,7 @@ public class TestClackData {
 		System.out.println(ClackData3.toString());
 		System.out.println(ClackData3.hashCode());
 		System.out.println("");
-		
+
 		System.out.println("ClackData4:");
 		ClackData ClackData4 = new MessageClackData();
 		System.out.println(ClackData4.getType());

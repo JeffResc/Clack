@@ -3,7 +3,7 @@ package test;
 import main.ClackClient;
 
 public class TestClackClient {
-	
+
 	public static void main(String[] args) {
 		System.out.println("ClackClient1:");
 		try {
@@ -15,7 +15,7 @@ public class TestClackClient {
 			System.out.println(ClackClient1.hashCode());
 			System.out.println("");
 			ClackClient1.start();
-			
+
 			System.out.println("ClackClient2:");
 			ClackClient ClackClient2 = new ClackClient("Anon");
 			System.out.println(ClackClient2.getUserName());
@@ -25,7 +25,7 @@ public class TestClackClient {
 			System.out.println(ClackClient2.equals(ClackClient1));
 			System.out.println(ClackClient2.hashCode());
 			System.out.println("");
-			
+
 			System.out.println("ClackClient3:");
 			ClackClient ClackClient3 = new ClackClient("Jeff", "server.jeffresc.dev");
 			System.out.println(ClackClient3.getUserName());
@@ -37,7 +37,7 @@ public class TestClackClient {
 			System.out.println("");
 		} catch (IllegalArgumentException e) {
 			System.err.println("Unable to create ClackClient: " + e.getMessage());
-		}		
+		}
 
 		System.out.println("ClackClient4:");
 		try {
@@ -51,7 +51,7 @@ public class TestClackClient {
 		} catch (IllegalArgumentException e) {
 			System.err.println("Unable to create ClackClient: " + e.getMessage());
 		}
-		
+
 		System.out.println("ClackClient5:");
 		try {
 			ClackClient ClackClient5 = new ClackClient("Jeff", null);
@@ -59,7 +59,7 @@ public class TestClackClient {
 		} catch (IllegalArgumentException e) {
 			System.err.println("Unable to create ClackClient: " + e.getMessage());
 		}
-		
+
 		System.out.println("ClackClient6:");
 		try {
 			ClackClient ClackClient6 = new ClackClient("Jeff", "server.jeffresc.dev", 1000);

@@ -5,12 +5,14 @@ import java.util.Objects;
 public class MessageClackData extends ClackData {
 
 	/**
-	 * String representing instant message. Can only be set during class construction and can be retrieved using the getData() method.
+	 * String representing instant message. Can only be set during class
+	 * construction and can be retrieved using the getData() method.
 	 */
 	private String message;
 
 	/**
 	 * Constructor that accepts a userName, message, key and type.
+	 * 
 	 * @param userName
 	 * @param message
 	 * @param key
@@ -20,13 +22,13 @@ public class MessageClackData extends ClackData {
 		super(userName, type);
 		this.message = encrypt(message, key);
 	}
-	
+
 	/**
 	 * Constructor that accepts a userName, message and type.
 	 * 
 	 * @param userName userName
-	 * @param message message
-	 * @param type type
+	 * @param message  message
+	 * @param type     type
 	 */
 	public MessageClackData(String userName, String message, Integer type) {
 		super(userName, type);
@@ -48,7 +50,7 @@ public class MessageClackData extends ClackData {
 	public String getData() {
 		return message;
 	}
-	
+
 	/**
 	 * Returns the decrypted message.
 	 * 
@@ -59,7 +61,8 @@ public class MessageClackData extends ClackData {
 	}
 
 	/**
-	 * Implements hashCode() functionality for this class and it's superclass' variables.
+	 * Implements hashCode() functionality for this class and it's superclass'
+	 * variables.
 	 */
 	@Override
 	public int hashCode() {
@@ -67,7 +70,8 @@ public class MessageClackData extends ClackData {
 	}
 
 	/**
-	 * Implements equals() functionality for this class and it's superclass' variables.
+	 * Implements equals() functionality for this class and it's superclass'
+	 * variables.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -78,7 +82,8 @@ public class MessageClackData extends ClackData {
 		if (getClass() != obj.getClass())
 			return false;
 		MessageClackData other = (MessageClackData) obj;
-		return Objects.equals(message, other.message) && Objects.equals(getUserName(), other.getUserName()) && Objects.equals(getType(), other.getType()) && Objects.equals(getDate(), other.getDate());
+		return Objects.equals(message, other.message) && Objects.equals(getUserName(), other.getUserName())
+				&& Objects.equals(getType(), other.getType()) && Objects.equals(getDate(), other.getDate());
 	}
 
 	/**
@@ -88,5 +93,5 @@ public class MessageClackData extends ClackData {
 	public String toString() {
 		return "MessageClackData [message=" + message + ", userName=" + getUserName() + ", type=" + getType() + "]";
 	}
-	
+
 }
