@@ -50,6 +50,9 @@ public class ClackServer {
 	 * @param port port
 	 */
 	public ClackServer(Integer port) {
+		if (port < 1024) {
+			throw new IllegalArgumentException("port must be greater than 1024");
+		}
 		this.port = port;
 	}
 
