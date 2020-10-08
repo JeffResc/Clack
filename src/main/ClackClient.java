@@ -1,8 +1,11 @@
 package main;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -145,19 +148,27 @@ public class ClackClient {
 	}
 
 	/**
-	 * Sends data to server, does not return anything, for now it should have no
-	 * code, just a declaration.
+	 * Sends data to server, does not return anything.
 	 */
 	public void sendData() {
-
+		 try {
+			outToServer.writeObject(dataToSendToServer);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
-	 * Receives data from the server, does not return anything for now it should
-	 * have no code, just a declaration.
+	 * Receives data from the server, does not return anything.
 	 */
 	public void receiveData() {
-
+		try {
+			dataToReceieveFromServer = (ClackData) inFromServer.readObject();
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
