@@ -3,8 +3,10 @@ package main;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.NoRouteToHostException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.rmi.UnknownHostException;
 import java.util.Objects;
 
 import data.ClackData;
@@ -78,11 +80,19 @@ public class ClackServer {
 			ServerSocket sskt = new ServerSocket(port);
 			Socket clientSocket = sskt.accept();
 			
-			inFromClient = new ObjectInputStream(clientSocket.getInputStream());
 			outToClient = new ObjectOutputStream(clientSocket.getOutputStream());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			inFromClient = new ObjectInputStream(clientSocket.getInputStream());
+			
+			this.receiveData();
+			dataToReceieveFromClient = dataToSendToClient; // echo's the data back
+			this.sendData();
+			sskt.close();
+		} catch (UnknownHostException uhe) {
+			System.err.println("unknown host");
+		} catch (NoRouteToHostException nrthe) {
+			System.err.println("no route to host");
+		} catch (IOException ioe) {
+			System.err.println("io exception");
 		}
 	}
 
@@ -93,9 +103,14 @@ public class ClackServer {
 	public void receiveData() {
 		try {
 			dataToReceieveFromClient = (ClackData) inFromClient.readObject();
-		} catch (ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (UnknownHostException uhe) {
+			System.err.println("unknown host");
+		} catch (NoRouteToHostException nrthe) {
+			System.err.println("no route to host");
+		} catch (IOException ioe) {
+			System.err.println("io exception");
+		} catch (ClassNotFoundException cnfe) {
+			System.err.println("class not found exception");
 		}
 	}
 
@@ -106,9 +121,12 @@ public class ClackServer {
 	public void sendData() {
 		try {
 			outToClient.writeObject(dataToSendToClient);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (UnknownHostException uhe) {
+			System.err.println("unknown host");
+		} catch (NoRouteToHostException nrthe) {
+			System.err.println("no route to host");
+		} catch (IOException ioe) {
+			System.err.println("io exception");
 		}
 	}
 
