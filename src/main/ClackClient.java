@@ -241,6 +241,27 @@ public class ClackClient {
 		return port;
 	}
 
+	public static void main(String args[]) {
+		try {
+			final Scanner commandin = new Scanner( System.in);
+			final String[] commandsplit1;
+			final String[] commandsplit2;
+			commandin.next(); // java
+			commandin.next(); // ClackClient
+			if (commandin.hasNext()) {
+				commandsplit1 = commandin.next().split("@");
+				commandsplit2 = commandsplit1[1].split(":");
+				ClackClient client = new ClackClient(commandsplit1[0], commandsplit2[0], Integer.parseInt(commandsplit2[1]));
+				client.start();
+			}
+			commandin.close();
+		} catch(ArrayIndexOutOfBoundsException aioobe) {
+			System.err.println("array out of bounds exception");
+		} catch(NumberFormatException nfe) {
+			System.err.println("number format exception (port needs to be a number)");
+		}
+	}
+	
 	/**
 	 * Implements hashCode() functionality for this class and it's superclass'
 	 * variables.
