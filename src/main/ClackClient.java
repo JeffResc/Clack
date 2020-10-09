@@ -3,7 +3,9 @@ package main;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.NoRouteToHostException;
 import java.net.Socket;
+import java.rmi.UnknownHostException;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -128,23 +130,31 @@ public class ClackClient {
 			Socket skt = new Socket(hostName, port);
 			inFromServer = new ObjectInputStream(skt.getInputStream());
 			outToServer = new ObjectOutputStream(skt.getOutputStream());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			inFromStd = new Scanner(System.in);
+			this.readClientData();
+			inFromStd.close();
+			this.sendData();
+			this.receiveData();
+			this.printData();
+			skt.close();
+			
+		} catch (UnknownHostException uhe) {
+			System.err.println("unknown host");
+		} catch (NoRouteToHostException nrthe) {
+			System.err.println("no route to host");
+		} catch (IOException ioe) {
+			System.err.println("io exception");
 		}
 		
-		inFromStd = new Scanner(System.in);
-		this.readClientData();
-		inFromStd.close();
-		dataToReceieveFromServer = dataToSendToServer;
-		this.printData();
 	}
 
 	/**
 	 * Reads the data from the client, does not return anything.
 	 */
 	public void readClientData() {
-		switch (inFromStd.next()) {
+		final String command = inFromStd.next();
+		switch (command) {
 		case "DONE":
 			closeConnection = true;
 			break;
@@ -158,7 +168,7 @@ public class ClackClient {
 			}
 			break;
 		default:
-			dataToSendToServer = new MessageClackData(userName, "", ClackData.CONSTANT_SENDMESSAGE);
+			dataToSendToServer = new MessageClackData(userName, command, ClackData.CONSTANT_SENDMESSAGE);
 			break;
 		}
 	}
@@ -169,9 +179,12 @@ public class ClackClient {
 	public void sendData() {
 		try {
 			outToServer.writeObject(dataToSendToServer);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (UnknownHostException uhe) {
+			System.err.println("unknown host");
+		} catch (NoRouteToHostException nrthe) {
+			System.err.println("no route to host");
+		} catch (IOException ioe) {
+			System.err.println("io exception");
 		}
 	}
 
@@ -181,9 +194,14 @@ public class ClackClient {
 	public void receiveData() {
 		try {
 			dataToReceieveFromServer = (ClackData) inFromServer.readObject();
-		} catch (ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (UnknownHostException uhe) {
+			System.err.println("unknown host");
+		} catch (NoRouteToHostException nrthe) {
+			System.err.println("no route to host");
+		} catch (IOException ioe) {
+			System.err.println("io exception");
+		} catch (ClassNotFoundException cnfe) {
+			System.err.println("class not found exception");
 		}
 	}
 
