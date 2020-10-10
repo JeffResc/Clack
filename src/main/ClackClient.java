@@ -133,11 +133,11 @@ public class ClackClient {
 			while (!closeConnection) {
 				inFromStd = new Scanner(System.in);
 				this.readClientData();
-				inFromStd.close();
 				this.sendData();
 				this.receiveData();
 				this.printData();
 			}
+			inFromStd.close();
 			skt.close();
 		} catch (UnknownHostException uhe) {
 			System.err.println("unknown host");
