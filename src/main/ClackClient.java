@@ -243,18 +243,31 @@ public class ClackClient {
 
 	public static void main(String args[]) {
 		try {
-			final Scanner commandin = new Scanner( System.in);
-			final String[] commandsplit1;
-			final String[] commandsplit2;
-			commandin.next(); // java
-			commandin.next(); // ClackClient
-			if (commandin.hasNext()) {
-				commandsplit1 = commandin.next().split("@");
-				commandsplit2 = commandsplit1[1].split(":");
-				ClackClient client = new ClackClient(commandsplit1[0], commandsplit2[0], Integer.parseInt(commandsplit2[1]));
-				client.start();
+			ClackClient client;
+			if (args.length > 0) {
+				final String input = args[0];
+				if (input.contains("@")) {
+					if (input.contains(":")) {
+						// Input contains username, hostname and port
+						final String username = input.split("@")[0];
+						final String hostname = input.split("@")[1].split(":")[0];
+						final int port = Integer.parseInt(input.split(":")[1]);
+						client = new ClackClient(username, hostname, port);
+					} else {
+						// Input contains username and hostname
+						final String username = input.split("@")[0];
+						final String hostname = input.split("@")[1];
+						client = new ClackClient(username, hostname);
+					}
+				} else {
+					// Input contains username
+					client = new ClackClient(input);
+				}
+			} else {
+				// No arguments, run as default constructor
+				client = new ClackClient();
 			}
-			commandin.close();
+			client.start();
 		} catch(ArrayIndexOutOfBoundsException aioobe) {
 			System.err.println("array out of bounds exception");
 		} catch(NumberFormatException nfe) {
