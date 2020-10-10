@@ -102,7 +102,7 @@ public class ClackClient {
 	 * @param hostName hostName
 	 */
 	public ClackClient(String userName, String hostName) {
-		this(userName, hostName, new Integer(DEFAULT_PORT));
+		this(userName, hostName, DEFAULT_PORT);
 	}
 
 	/**
