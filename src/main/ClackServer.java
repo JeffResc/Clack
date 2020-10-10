@@ -8,6 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.rmi.UnknownHostException;
 import java.util.Objects;
+import java.util.Scanner;
 
 import data.ClackData;
 
@@ -139,6 +140,23 @@ public class ClackServer {
 		return port;
 	}
 
+	public static void main(String args[]) {
+		try {
+			ClackServer server;
+			if (args.length > 0) {
+				final String input = args[0];
+				server = new ClackServer(Integer.parseInt(input));
+			} else {
+				server = new ClackServer();
+			}
+			server.start();
+		} catch(ArrayIndexOutOfBoundsException aioobe) {
+			System.err.println("array out of bounds exception");
+		} catch(NumberFormatException nfe) {
+			System.err.println("number format exception (port needs to be a number)");
+		}
+	}
+	
 	/**
 	 * Implements hashCode() functionality for this class and it's superclass'
 	 * variables.
