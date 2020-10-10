@@ -80,11 +80,11 @@ public class ClackServer {
 		try {
 			ServerSocket sskt = new ServerSocket(port);
 			Socket clientSocket = sskt.accept();
-			
+
 			outToClient = new ObjectOutputStream(clientSocket.getOutputStream());
 			inFromClient = new ObjectInputStream(clientSocket.getInputStream());
-			
-			while(!closeConnection) {
+
+			while (!closeConnection) {
 				this.receiveData();
 				dataToSendToClient = dataToReceieveFromClient; // echo's the data back
 				this.sendData();
@@ -106,7 +106,7 @@ public class ClackServer {
 	public void receiveData() {
 		try {
 			dataToReceieveFromClient = (ClackData) inFromClient.readObject();
-			if(dataToReceieveFromClient.getData() == "DONE") {
+			if (dataToReceieveFromClient.getData() == "DONE") {
 				closeConnection = true;
 			}
 		} catch (UnknownHostException uhe) {
@@ -155,13 +155,13 @@ public class ClackServer {
 				server = new ClackServer();
 			}
 			server.start();
-		} catch(ArrayIndexOutOfBoundsException aioobe) {
+		} catch (ArrayIndexOutOfBoundsException aioobe) {
 			System.err.println("array out of bounds exception");
-		} catch(NumberFormatException nfe) {
+		} catch (NumberFormatException nfe) {
 			System.err.println("number format exception (port needs to be a number)");
 		}
 	}
-	
+
 	/**
 	 * Implements hashCode() functionality for this class and it's superclass'
 	 * variables.

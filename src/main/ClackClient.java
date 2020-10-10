@@ -130,7 +130,7 @@ public class ClackClient {
 			Socket skt = new Socket(hostName, port);
 			inFromServer = new ObjectInputStream(skt.getInputStream());
 			outToServer = new ObjectOutputStream(skt.getOutputStream());
-			while(!closeConnection) {
+			while (!closeConnection) {
 				inFromStd = new Scanner(System.in);
 				this.readClientData();
 				inFromStd.close();
@@ -146,7 +146,7 @@ public class ClackClient {
 		} catch (IOException ioe) {
 			System.err.println("io exception");
 		}
-		
+
 	}
 
 	/**
@@ -155,22 +155,22 @@ public class ClackClient {
 	public void readClientData() {
 		final String command = inFromStd.next();
 		switch (command) {
-		case "DONE":
-			closeConnection = true;
-			dataToSendToServer = new MessageClackData(userName, command, ClackData.CONSTANT_SENDMESSAGE);
-			break;
-		case "SENDFILE":
-			dataToSendToServer = new FileClackData(userName, inFromStd.next(), ClackData.CONSTANT_SENDFILE);
-			try {
-				((FileClackData) dataToSendToServer).readFileContents();
-			} catch (IOException ioe) {
-				dataToSendToServer = null;
-				System.err.println(ioe);
-			}
-			break;
-		default:
-			dataToSendToServer = new MessageClackData(userName, command, ClackData.CONSTANT_SENDMESSAGE);
-			break;
+			case "DONE":
+				closeConnection = true;
+				dataToSendToServer = new MessageClackData(userName, command, ClackData.CONSTANT_SENDMESSAGE);
+				break;
+			case "SENDFILE":
+				dataToSendToServer = new FileClackData(userName, inFromStd.next(), ClackData.CONSTANT_SENDFILE);
+				try {
+					((FileClackData) dataToSendToServer).readFileContents();
+				} catch (IOException ioe) {
+					dataToSendToServer = null;
+					System.err.println(ioe);
+				}
+				break;
+			default:
+				dataToSendToServer = new MessageClackData(userName, command, ClackData.CONSTANT_SENDMESSAGE);
+				break;
 		}
 	}
 
@@ -269,13 +269,13 @@ public class ClackClient {
 				client = new ClackClient();
 			}
 			client.start();
-		} catch(ArrayIndexOutOfBoundsException aioobe) {
+		} catch (ArrayIndexOutOfBoundsException aioobe) {
 			System.err.println("array out of bounds exception");
-		} catch(NumberFormatException nfe) {
+		} catch (NumberFormatException nfe) {
 			System.err.println("number format exception (port needs to be a number)");
 		}
 	}
-	
+
 	/**
 	 * Implements hashCode() functionality for this class and it's superclass'
 	 * variables.
