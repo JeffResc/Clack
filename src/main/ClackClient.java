@@ -130,15 +130,15 @@ public class ClackClient {
 			Socket skt = new Socket(hostName, port);
 			inFromServer = new ObjectInputStream(skt.getInputStream());
 			outToServer = new ObjectOutputStream(skt.getOutputStream());
-			
-			inFromStd = new Scanner(System.in);
-			this.readClientData();
-			inFromStd.close();
-			this.sendData();
-			this.receiveData();
-			this.printData();
+			while(!closeConnection) {
+				inFromStd = new Scanner(System.in);
+				this.readClientData();
+				inFromStd.close();
+				this.sendData();
+				this.receiveData();
+				this.printData();
+			}
 			skt.close();
-			
 		} catch (UnknownHostException uhe) {
 			System.err.println("unknown host");
 		} catch (NoRouteToHostException nrthe) {
@@ -157,6 +157,7 @@ public class ClackClient {
 		switch (command) {
 		case "DONE":
 			closeConnection = true;
+			dataToSendToServer = new MessageClackData(userName, command, ClackData.CONSTANT_SENDMESSAGE);
 			break;
 		case "SENDFILE":
 			dataToSendToServer = new FileClackData(userName, inFromStd.next(), ClackData.CONSTANT_SENDFILE);
