@@ -106,7 +106,7 @@ public class ClackServer {
 	public void receiveData() {
 		try {
 			dataToReceieveFromClient = (ClackData) inFromClient.readObject();
-			if (dataToReceieveFromClient.getData() == "DONE") {
+			if (dataToReceieveFromClient.getData().equals("DONE")) {
 				closeConnection = true;
 			}
 		} catch (UnknownHostException uhe) {
