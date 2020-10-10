@@ -10,7 +10,6 @@ import java.rmi.UnknownHostException;
 import java.util.Objects;
 
 import data.ClackData;
-import data.MessageClackData;
 
 public class ClackServer {
 
