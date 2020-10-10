@@ -105,6 +105,7 @@ public class ClackServer {
 	public void receiveData() {
 		try {
 			dataToReceieveFromClient = (ClackData) inFromClient.readObject();
+			System.out.println(dataToReceieveFromClient);
 			if (dataToReceieveFromClient.getData().equals("DONE")) {
 				closeConnection = true;
 			}
