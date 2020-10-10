@@ -8,7 +8,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.rmi.UnknownHostException;
 import java.util.Objects;
-import java.util.Scanner;
 
 import data.ClackData;
 
