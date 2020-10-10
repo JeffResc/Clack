@@ -29,7 +29,7 @@ public class ClackServer {
 	 * Boolean representing whether connection is closed or not. This is exclusively
 	 * an internal variable and cannot be set or retrieved using any methods.
 	 */
-	private Boolean closeConnection;
+	private Boolean closeConnection = false;
 
 	/**
 	 * ClackData object representing data received from the client. This is
