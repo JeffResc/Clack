@@ -1,7 +1,6 @@
 package data;
 
 import java.util.Date;
-import java.util.Scanner;
 
 public abstract class ClackData implements java.io.Serializable {
 
