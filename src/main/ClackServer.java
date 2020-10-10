@@ -10,6 +10,7 @@ import java.rmi.UnknownHostException;
 import java.util.Objects;
 
 import data.ClackData;
+import data.MessageClackData;
 
 public class ClackServer {
 
@@ -83,9 +84,11 @@ public class ClackServer {
 			outToClient = new ObjectOutputStream(clientSocket.getOutputStream());
 			inFromClient = new ObjectInputStream(clientSocket.getInputStream());
 			
-			this.receiveData();
-			dataToSendToClient = dataToReceieveFromClient; // echo's the data back
-			this.sendData();
+			while(!closeConnection) {
+				this.receiveData();
+				dataToSendToClient = dataToReceieveFromClient; // echo's the data back
+				this.sendData();
+			}
 			sskt.close();
 		} catch (UnknownHostException uhe) {
 			System.err.println("unknown host");
@@ -103,6 +106,9 @@ public class ClackServer {
 	public void receiveData() {
 		try {
 			dataToReceieveFromClient = (ClackData) inFromClient.readObject();
+			if(dataToReceieveFromClient.getData() == "DONE") {
+				closeConnection = true;
+			}
 		} catch (UnknownHostException uhe) {
 			System.err.println("unknown host");
 		} catch (NoRouteToHostException nrthe) {
