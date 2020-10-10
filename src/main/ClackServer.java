@@ -84,7 +84,7 @@ public class ClackServer {
 			inFromClient = new ObjectInputStream(clientSocket.getInputStream());
 			
 			this.receiveData();
-			dataToReceieveFromClient = dataToSendToClient; // echo's the data back
+			dataToSendToClient = dataToReceieveFromClient; // echo's the data back
 			this.sendData();
 			sskt.close();
 		} catch (UnknownHostException uhe) {
