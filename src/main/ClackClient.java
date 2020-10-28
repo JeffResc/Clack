@@ -120,22 +120,28 @@ public class ClackClient {
 	public ClackClient() {
 		this("Anon");
 	}
+	
+	/**
+	 * @return closeConnection
+	 */
+	public boolean getCloseConnection() { return closeConnection; }
 
 	/**
 	 * Does not return anything, but starts the connection, reads data from the
-	 * client, and prints the data out.
+	 * client, and starts a second thread to talk to the server
 	 */
 	public void start() {
 		try {
 			Socket skt = new Socket(hostName, port);
 			inFromServer = new ObjectInputStream(skt.getInputStream());
 			outToServer = new ObjectOutputStream(skt.getOutputStream());
+			ClientSideServerListener clientsideserverlistener = new ClientSideServerListener(this); // create new cliensideserverlistener for this client
+			Thread clientsidethread = new Thread(clientsideserverlistener); // create new thread
+			clientsidethread.start(); // start new thread to run "in parallel" with main thread
 			while (!closeConnection) {
 				inFromStd = new Scanner(System.in);
 				this.readClientData();
 				this.sendData();
-				this.receiveData();
-				this.printData();
 			}
 			inFromStd.close();
 			skt.close();
