@@ -8,10 +8,10 @@ public class ClientSideServerListener implements Runnable {
 
 	/**
 	 * constructor taking a clackclinet object
-	 * @param temp
+	 * @param client
 	 */
-	public ClientSideServerListener(ClackClient temp) {
-		this.client = temp;
+	public ClientSideServerListener(ClackClient client) {
+		this.client = client;
 	}
 
 	/**
