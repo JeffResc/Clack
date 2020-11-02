@@ -31,29 +31,6 @@ public class ClackServer {
 	private Boolean closeConnection = false;
 
 	/**
-	 * ClackData object representing data received from the client. This is
-	 * exclusively an internal variable and cannot be set or retrieved using any
-	 * methods.
-	 */
-	private ClackData dataToReceieveFromClient;
-
-	/**
-	 * ClackData object representing data sent to client. This is exclusively an
-	 * internal variable and cannot be set or retrieved using any methods.
-	 */
-	private ClackData dataToSendToClient;
-
-	/**
-	 * Input stream that receives data packets from the client.
-	 */
-	private ObjectInputStream inFromClient = null;
-
-	/**
-	 * Output stream that sends data packets to the client.
-	 */
-	private ObjectOutputStream outToClient = null;
-
-	/**
 	 * Constructor that accepts a port
 	 * 
 	 * @param port port
@@ -99,44 +76,6 @@ public class ClackServer {
 	}
 
 	/**
-	 * receives data from the server, does not return anything for now it should
-	 * have no code, just a declaration
-	 */
-	public void receiveData() {
-		try {
-			dataToReceieveFromClient = (ClackData) inFromClient.readObject();
-			System.out.println(dataToReceieveFromClient);
-			if (dataToReceieveFromClient.getData().equals("DONE")) {
-				closeConnection = true;
-			}
-		} catch (UnknownHostException uhe) {
-			System.err.println("unknown host");
-		} catch (NoRouteToHostException nrthe) {
-			System.err.println("no route to host");
-		} catch (IOException ioe) {
-			System.err.println("io exception");
-		} catch (ClassNotFoundException cnfe) {
-			System.err.println("class not found exception");
-		}
-	}
-
-	/**
-	 * sends data to server, does not return anything, for now it should have no
-	 * code, just a declaration
-	 */
-	public void sendData() {
-		try {
-			outToClient.writeObject(dataToSendToClient);
-		} catch (UnknownHostException uhe) {
-			System.err.println("unknown host");
-		} catch (NoRouteToHostException nrthe) {
-			System.err.println("no route to host");
-		} catch (IOException ioe) {
-			System.err.println("io exception");
-		}
-	}
-
-	/**
 	 * Returns port
 	 * 
 	 * @return port
@@ -168,7 +107,7 @@ public class ClackServer {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(closeConnection, dataToReceieveFromClient, dataToSendToClient, port);
+		return Objects.hash(closeConnection, port);
 	}
 
 	/**
@@ -185,8 +124,7 @@ public class ClackServer {
 			return false;
 		ClackServer other = (ClackServer) obj;
 		return Objects.equals(closeConnection, other.closeConnection)
-				&& Objects.equals(dataToReceieveFromClient, other.dataToReceieveFromClient)
-				&& Objects.equals(dataToSendToClient, other.dataToSendToClient) && Objects.equals(port, other.port);
+				&& Objects.equals(port, other.port);
 	}
 
 	/**
@@ -194,8 +132,7 @@ public class ClackServer {
 	 */
 	@Override
 	public String toString() {
-		return "ClackServer [port=" + port + ", closeConnection=" + closeConnection + ", dataToReceieveFromClient="
-				+ dataToReceieveFromClient + ", dataToSendToClient=" + dataToSendToClient + "]";
+		return "ClackServer [port=" + port + ", closeConnection=" + closeConnection + "]";
 	}
 
 }
