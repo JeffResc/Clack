@@ -75,7 +75,7 @@ public class ServerSideClientIO implements Runnable {
 		} catch (NoRouteToHostException nrthe) {
 			System.err.println("no route to host");
 		} catch (IOException ioe) {
-			System.err.println("io exception");
+            System.err.println("io exception");
 		}
     }
 
@@ -95,7 +95,8 @@ public class ServerSideClientIO implements Runnable {
 		} catch (NoRouteToHostException nrthe) {
 			System.err.println("no route to host");
 		} catch (IOException ioe) {
-			System.err.println("io exception");
+            closeConnection = true;
+			server.remove(this);
 		} catch (ClassNotFoundException cnfe) {
 			System.err.println("class not found exception");
 		}
@@ -112,7 +113,8 @@ public class ServerSideClientIO implements Runnable {
 		} catch (NoRouteToHostException nrthe) {
 			System.err.println("no route to host");
 		} catch (IOException ioe) {
-			System.err.println("io exception");
+            closeConnection = true;
+			server.remove(this);
 		}
 	}
 
