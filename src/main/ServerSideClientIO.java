@@ -8,6 +8,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import data.ClackData;
+import data.ListUsersClackData;
+import data.MessageClackData;
 
 public class ServerSideClientIO implements Runnable {
     /**
@@ -67,7 +69,13 @@ public class ServerSideClientIO implements Runnable {
 
 			while (!closeConnection) {
                 this.receiveData();
-                this.server.broadcast(dataToReceieveFromClient);
+                if (dataToReceieveFromClient instanceof ListUsersClackData) {
+                    setDataToSendToClient(new MessageClackData("Server", this.server.LUClackData.getData(), ClackData.CONSTANT_DEFAULT_TYPE));
+                    System.out.println(this.server.LUClackData.getData());
+                } else {
+                    this.server.LUClackData.addUser(dataToReceieveFromClient.getUserName());
+                    this.server.broadcast(dataToReceieveFromClient);
+                }
                 this.sendData();
 			}
 		} catch (UnknownHostException uhe) {
@@ -88,7 +96,9 @@ public class ServerSideClientIO implements Runnable {
 			System.out.println(dataToReceieveFromClient);
 			if (dataToReceieveFromClient.getData().equals("DONE")) {
                 closeConnection = true;
-				server.remove(this);
+                System.out.println("USERSLIST: " + this.server.LUClackData.getData());
+                this.server.LUClackData.delUser(dataToReceieveFromClient.getUserName());
+                server.remove(this);
 			}
 		} catch (UnknownHostException uhe) {
 			System.err.println("unknown host");

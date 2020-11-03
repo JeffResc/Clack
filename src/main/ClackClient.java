@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import data.ClackData;
 import data.FileClackData;
+import data.ListUsersClackData;
 import data.MessageClackData;
 
 public class ClackClient {
@@ -173,6 +174,9 @@ public class ClackClient {
 					dataToSendToServer = null;
 					System.err.println(ioe);
 				}
+				break;
+			case "LISTUSERS":
+				dataToSendToServer = new ListUsersClackData(userName, ClackData.CONSTANT_LISTUSERS);
 				break;
 			default:
 				dataToSendToServer = new MessageClackData(userName, command, ClackData.CONSTANT_SENDMESSAGE);

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import data.ClackData;
+import data.ListUsersClackData;
 
 public class ClackServer {
 
@@ -35,6 +36,11 @@ public class ClackServer {
 	private ArrayList<ServerSideClientIO> serverSideClientIOList;
 
 	/**
+	 * A list of current users.
+	 */
+	public ListUsersClackData LUClackData;
+
+	/**
 	 * Constructor that accepts a port
 	 * 
 	 * @param port port
@@ -44,6 +50,7 @@ public class ClackServer {
 			throw new IllegalArgumentException("port must be greater than 1024");
 		}
 		serverSideClientIOList = new ArrayList<ServerSideClientIO>();
+		LUClackData = new ListUsersClackData();
 		this.port = port;
 	}
 
@@ -149,5 +156,4 @@ public class ClackServer {
 	public synchronized void remove(ServerSideClientIO serverSideClientToRemove) {
 		serverSideClientIOList.remove(serverSideClientToRemove);
 	}
-
 }
