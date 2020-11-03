@@ -1,0 +1,127 @@
+package main;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.NoRouteToHostException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+import data.ClackData;
+
+public class ServerSideClientIO implements Runnable {
+    /**
+	 * Boolean representing whether connection is closed or not.
+	 */
+    private Boolean closeConnection = false;
+    
+    /**
+	 * ClackData object representing data received from the client.
+	 */
+    private ClackData dataToReceieveFromClient;
+    
+    /**
+	 * ClackData object representing data sent to client.
+	 */
+    private ClackData dataToSendToClient;
+    
+    /**
+	 * ObjectInputStream to receive information from client.
+	 */
+    private ObjectInputStream inFromClient = null;
+    
+    /**
+	 * ObjectOutputStream to send information to client.
+	 */
+    private ObjectOutputStream outToClient = null;
+    
+    /**
+     * ClackServer object representing the master server.
+     */
+    private ClackServer server;
+
+    /**
+     * Socket object representing the socket accepted from the client
+     */
+    private Socket clientSocket;
+
+    /**
+     * Constructor that takes ClackServer object and Socket object as parameters.
+     * 
+     * @param server server
+     * @param clientSocket clientSocket
+     */
+    public ServerSideClientIO(ClackServer server, Socket clientSocket) {
+        this.server = server;
+        this.clientSocket = clientSocket;
+    }
+    
+    /**
+     * Overrides the run method in the Runnable interface.
+     */
+    @Override
+    public void run() {
+        try {
+			outToClient = new ObjectOutputStream(clientSocket.getOutputStream());
+			inFromClient = new ObjectInputStream(clientSocket.getInputStream());
+
+			while (!closeConnection) {
+                this.receiveData();
+                this.server.broadcast(dataToReceieveFromClient);
+                this.sendData();
+			}
+		} catch (UnknownHostException uhe) {
+			System.err.println("unknown host");
+		} catch (NoRouteToHostException nrthe) {
+			System.err.println("no route to host");
+		} catch (IOException ioe) {
+			System.err.println("io exception");
+		}
+    }
+
+    /**
+     * Receives data from the client.
+     */
+    public void receiveData() {
+		try {
+			dataToReceieveFromClient = (ClackData) inFromClient.readObject();
+			System.out.println(dataToReceieveFromClient);
+			if (dataToReceieveFromClient.getData().equals("DONE")) {
+                closeConnection = true;
+				server.remove(this);
+			}
+		} catch (UnknownHostException uhe) {
+			System.err.println("unknown host");
+		} catch (NoRouteToHostException nrthe) {
+			System.err.println("no route to host");
+		} catch (IOException ioe) {
+			System.err.println("io exception");
+		} catch (ClassNotFoundException cnfe) {
+			System.err.println("class not found exception");
+		}
+	}
+
+    /**
+     * Sends data to client.
+     */
+    public void sendData() {
+		try {
+			outToClient.writeObject(dataToSendToClient);
+		} catch (UnknownHostException uhe) {
+			System.err.println("unknown host");
+		} catch (NoRouteToHostException nrthe) {
+			System.err.println("no route to host");
+		} catch (IOException ioe) {
+			System.err.println("io exception");
+		}
+	}
+
+    /**
+     * Mutator method to set the ClackData variable.
+     * 
+     * @param dataToSendToClient dataToSendToClient
+     */
+    public void setDataToSendToClient(ClackData dataToSendToClient) {
+        this.dataToSendToClient = dataToSendToClient;
+    }
+}
