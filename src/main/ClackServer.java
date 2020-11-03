@@ -1,12 +1,11 @@
 package main;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.NoRouteToHostException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.rmi.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import data.ClackData;
@@ -31,6 +30,11 @@ public class ClackServer {
 	private Boolean closeConnection = false;
 
 	/**
+	 * An ArrayList consisting of ServerSideClientIO objects.
+	 */
+	private ArrayList<ServerSideClientIO> serverSideClientIOList;
+
+	/**
 	 * Constructor that accepts a port
 	 * 
 	 * @param port port
@@ -39,6 +43,7 @@ public class ClackServer {
 		if (port < 1024) {
 			throw new IllegalArgumentException("port must be greater than 1024");
 		}
+		serverSideClientIOList = new ArrayList<ServerSideClientIO>();
 		this.port = port;
 	}
 
@@ -55,15 +60,14 @@ public class ClackServer {
 	public void start() {
 		try {
 			ServerSocket sskt = new ServerSocket(port);
-			Socket clientSocket = sskt.accept();
-
-			outToClient = new ObjectOutputStream(clientSocket.getOutputStream());
-			inFromClient = new ObjectInputStream(clientSocket.getInputStream());
 
 			while (!closeConnection) {
-				this.receiveData();
-				dataToSendToClient = dataToReceieveFromClient; // echo's the data back
-				this.sendData();
+				Socket clientSocket = sskt.accept();
+				ServerSideClientIO newClient = new ServerSideClientIO(this, clientSocket);
+				serverSideClientIOList.add(newClient);
+
+				Thread thread = new Thread(newClient);
+				thread.start();
 			}
 			sskt.close();
 		} catch (UnknownHostException uhe) {
@@ -133,6 +137,17 @@ public class ClackServer {
 	@Override
 	public String toString() {
 		return "ClackServer [port=" + port + ", closeConnection=" + closeConnection + "]";
+	}
+
+	public synchronized void broadcast(ClackData dataToBroadcastToClients) {
+		for (ServerSideClientIO client: serverSideClientIOList) {
+			client.setDataToSendToClient(dataToBroadcastToClients);
+			client.sendData();
+		}
+	}
+
+	public synchronized void remove(ServerSideClientIO serverSideClientToRemove) {
+		serverSideClientIOList.remove(serverSideClientToRemove);
 	}
 
 }
